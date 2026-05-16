@@ -17,13 +17,13 @@ const industries = [
     title: "Hotels & Catering",
     label: "Hospitality Groups",
     desc: "Daily fresh supplies for premium buffet setups and signature fine-dining desserts.",
-    image: "https://images.unsplash.com/photo-1551632432-c735e84043b1?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.unsplash.com/photo-1616734755909-bb016ce64930?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aG90ZWwlMjBhbmQlMjBjYXRlcmluZ3xlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     title: "Food Distributors",
     label: "Regional Partnerships",
     desc: "Reliable white-labeling and bulk supply chain support for ingredient resellers.",
-    image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaad21?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.unsplash.com/photo-1617194191528-9a50cf609304?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZCUyMGRpc3RyaWJ1dG9yfGVufDB8fDB8fHww"
   }
 ];
 
