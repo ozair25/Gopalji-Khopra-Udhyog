@@ -10,7 +10,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-full">
         <div className="flex justify-between items-center h-full">
           <div className="flex items-center gap-4 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img src="/gopalji-logo.webp" alt="Gopalji Logo" className="h-12 lg:h-14 w-auto transition-transform group-hover:scale-110" />
+            <img src="/gopalji logo.webp" alt="Gopalji Logo" className="h-12 lg:h-14 w-auto transition-transform group-hover:scale-110" />
             <div className="flex flex-col">
               <span className="text-xl lg:text-2xl font-bold tracking-tighter text-coconut-brown leading-none">GOPALJI</span>
               <span className="text-[8px] lg:text-[10px] tracking-[0.4em] uppercase font-semibold text-gold-accent">Khopra Udhyog</span>
