@@ -1,0 +1,29 @@
+{
+  "entities": {
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "Customer lead from the website",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "businessName": { "type": "string" },
+        "productType": { "type": "string" },
+        "quantity": { "type": "string" },
+        "city": { "type": "string" },
+        "phone": { "type": "string" },
+        "status": { 
+          "type": "string",
+          "enum": ["new", "contacted", "completed"]
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "businessName", "phone", "createdAt"]
+    }
+  },
+  "firestore": {
+    "inquiries": {
+      "schema": "Inquiry",
+      "description": "Collection of all customer leads"
+    }
+  }
+}
