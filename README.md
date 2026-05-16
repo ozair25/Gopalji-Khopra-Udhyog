@@ -1,20 +1,55 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Gopalji Khopra Udhyog Website
 
-# Run and deploy your AI Studio app
+A premium modern B2B website designed for **Gopalji Khopra Udhyog**, focused on showcasing high-quality coconut ingredients including coconut flakes, coconut powder, and bulk food-grade coconut products.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/c61ea803-b59e-4dcd-8947-789dcffd8f4f
+- Premium luxury UI with beige/cream branding
+- Fully responsive design for desktop and mobile
+- Cinematic hero section
+- Modern B2B food industry branding
+- Product showcase sections
+- Bulk inquiry CTA
+- Smooth animations and premium typography
+- Optimized layout for readability and performance
 
-## Run Locally
+## Products
 
-**Prerequisites:**  Node.js
+- Coconut Flakes
+- Coconut Powder
+- Copra Products
+- Bulk Coconut Ingredients
 
+## Tech Stack
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- React / Next.js
+- Tailwind CSS
+- Framer Motion / GSAP
+- Responsive Modern UI
+
+## Design Style
+
+Inspired by luxury food-commercial aesthetics with:
+- Warm beige & cream palette
+- Minimal cinematic layouts
+- Premium typography
+- Elegant product presentation
+
+## Purpose
+
+This project was created to help establish a strong digital presence for a premium coconut ingredients manufacturer and wholesale supplier.
+
+## Responsive Support
+
+- Mobile optimized
+- Tablet optimized
+- Desktop optimized
+
+## Branding Focus
+
+The website is designed to feel:
+- Professional
+- Premium
+- Export-quality
+- Trustworthy for B2B clients
+
