@@ -9,7 +9,7 @@ export default function AboutUs() {
           <div className="relative">
              <div className="aspect-[4/5] rounded-[4rem] overflow-hidden border border-gold-accent/20">
                 <img 
-                  src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&q=80&w=1000" 
+                  src="https://images.unsplash.com/photo-1652211955967-99c892925469?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8UmVsaWFibGUlMjBHbG9iYWwlMjBNYW51ZmFjdHVyZXIlMjAlMjYlMjBFeHBvcnQlMjBQYXJ0bmVyJTIwb2YlMjBmb29kfGVufDB8fDB8fHww" 
                   alt="Coconut Processing" 
                   className="w-full h-full object-cover"
                 />
