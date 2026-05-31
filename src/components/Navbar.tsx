@@ -16,14 +16,14 @@ export default function Navbar() {
             className="flex items-center gap-1.5 xs:gap-2.5 lg:gap-3 group cursor-pointer select-none" 
             aria-label="Gopalji Khopra Udyog home page"
           >
-             <div className="bg-white/40 p-1 xs:p-1.5 rounded-lg sm:rounded-xl border border-white/50 shadow-sm transition-all group-hover:scale-105 shrink-0">
-              <img src="https://res.cloudinary.com/dtrvyelcg/image/upload/v1780234875/gopalji_new_logo_ukch69.png" alt="Gopalji Khopra Udyog logo" className="h-7 xs:h-8 sm:h-10 lg:h-12 w-auto relative z-10 object-contain" width="48" height="48" />
+             <div className="bg-white/40 p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-white/50 shadow-sm transition-all group-hover:scale-105 shrink-0">
+              <img src="https://res.cloudinary.com/dtrvyelcg/image/upload/v1780234875/gopalji_new_logo_ukch69.png" alt="Gopalji Khopra Udyog logo" className="h-9 xs:h-11 sm:h-14 lg:h-16 w-auto relative z-10 object-contain" width="64" height="64"/>
             </div>
             <div className="flex flex-col">
-              <span className="text-[10px] xs:text-[12px] sm:text-sm md:text-base lg:text-lg font-serif font-black tracking-tight text-coconut-brown leading-none whitespace-nowrap">
+              <span className="text-[12px] xs:text-[14px] sm:text-lg md:text-xl lg:text-2xl font-serif font-black tracking-tight text-coconut-brown leading-none whitespace-nowrap">
                 GOPALJI KHOPRA UDYOG
               </span>
-              <span className="text-[5.5px] xs:text-[7px] sm:text-[8px] lg:text-[10px] tracking-[0.25em] xs:tracking-[0.3em] uppercase font-bold text-gold-accent mt-0.5 whitespace-nowrap">
+              <span className="text-[6.5px] xs:text-[8.5px] sm:text-[10px] lg:text-[12px] tracking-[0.25em] xs:tracking-[0.3em] uppercase font-bold text-gold-accent mt-1 whitespace-nowrap">
                 PREMIUM COCONUT INGREDIENTS
               </span>
             </div>
