@@ -77,7 +77,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
           <span>© 2026 GOPALJI KHOPRA UDHYOG - ALL RIGHTS RESERVED</span>
           <span className="hidden md:inline text-white/20">|</span>
-          <span className="text-white/50 tracking-normal font-medium normal-case">by "Express Webcraft"</span>
+          <span className="text-white/50 tracking-normal font-medium normal-case">MADE BY "EXPRESS WEBCRAFT [7470857424]"</span>
         </div>
         <div className="flex gap-6 opacity-60">
           <Link to="/about-us" className="hover:underline focus:outline-none">Privacy Policy</Link>
