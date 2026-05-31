@@ -80,7 +80,7 @@ function ProductsServicesSite() {
         schemas={schemas}
       />
       <Navbar />
-      <div className="pt-20">
+     <div className="pt-[76px] xs:pt-[88px] sm:pt-[108px] lg:pt-[120px]">
         {/* Subtle, luxury catalog transition header */}
         <div className="bg-[#EFE6D5]/50 border-b border-[#D8B26A]/20 py-16 text-center px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
@@ -121,7 +121,7 @@ function AboutUsSite() {
         schemas={schemas}
       />
       <Navbar />
-      <div className="pt-20">
+      <div className="pt-[76px] xs:pt-[88px] sm:pt-[108px] lg:pt-[120px]">
         {/* Subtle, luxury company transition header */}
         <div className="bg-[#EFE6D5]/50 border-b border-[#D8B26A]/20 py-16 text-center px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
@@ -161,7 +161,7 @@ function ContactUsSite() {
         schemas={schemas}
       />
       <Navbar />
-      <div className="pt-20">
+      <div className="pt-[76px] xs:pt-[88px] sm:pt-[108px] lg:pt-[120px]">
         {/* Subtle, luxury contact transition header */}
         <div className="bg-[#EFE6D5]/50 border-b border-[#D8B26A]/20 py-16 text-center px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
