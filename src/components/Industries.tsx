@@ -1,69 +1,96 @@
+import React from 'react';
 import { motion } from 'motion/react';
+import { Cookie, Candy, Factory, Briefcase, Sparkles, Utensils, CheckCircle2 } from 'lucide-react';
 
-const industries = [
+const specializationsAndIndustries = [
   {
     title: "Bakeries",
-    label: "Artisan & Industrial",
-    desc: "Consistency in flake size and moisture for high-volume bread and pastry production.",
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=800"
+    icon: Cookie,
+    desc: "Aroma-rich coconut flakes and powders that optimize taste and texture in artisanal cookies, biscuits, and cakes."
   },
   {
     title: "Confectioneries",
-    label: "Sweets & Chocolate",
-    desc: "Premium fat content for rich mouthfeel in coconut-based fillings and coatings.",
-    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800"
+    icon: Candy,
+    desc: "Consistent high-fat grinds preferred for manufacturing chocolate candy fillings, truffles, and traditional premium sweets."
   },
   {
-    title: "Hotels & Catering",
-    label: "Hospitality Groups",
-    desc: "Daily fresh supplies for premium buffet setups and signature fine-dining desserts.",
-    image: "https://images.unsplash.com/photo-1551632432-c735e84043b1?auto=format&fit=crop&q=80&w=800"
+    title: "Food Manufacturers",
+    icon: Factory,
+    desc: "Bulk-tonnage ingredients sorted hygenically under FSSAI licenses to fit high-speed packaged food lines."
   },
   {
-    title: "Food Distributors",
-    label: "Regional Partnerships",
-    desc: "Reliable white-labeling and bulk supply chain support for ingredient resellers.",
-    image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaad21?auto=format&fit=crop&q=80&w=800"
+    title: "Wholesale Traders",
+    icon: Briefcase,
+    desc: "Uninterrupted national logistics, fully documented billing, and year-round stable supply support for stockists."
+  },
+  {
+    title: "Snack Processors",
+    icon: Sparkles,
+    desc: "Dehydrated, clean, moisture-optimized flakes serving nutrition bars, roasted mixtures, and premium granola blends."
+  },
+  {
+    title: "Hospitality & Catering",
+    icon: Utensils,
+    desc: "High-yield premium desiccated coconut and copra for hotel groups, catering networks, and restaurant chains."
   }
 ];
 
 export default function Industries() {
   return (
-    <section id="industries" className="section-padding bg-cream-light/30">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="text-gold-accent font-bold uppercase tracking-[0.3em] text-xs mb-4 block italic">Global Reach</span>
-          <h2 className="text-4xl md:text-5xl font-serif text-coconut-brown mb-6">Industries <span className="italic-display font-light">We Serve</span></h2>
-          <div className="w-20 h-[1px] bg-gold-accent mx-auto" />
+    <section id="industries" className="py-16 sm:py-24 bg-[#FAF7F2] relative overflow-hidden border-t border-[#8C6239]/10 text-[#4A2E1F]">
+      
+      {/* Background accents */}
+      <div className="absolute right-0 top-1/2 w-[300px] h-[300px] bg-[#E5D5BC]/10 rounded-full blur-[100px] pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="text-[#8C6239] font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs mb-2 block italic">Enterprise Client Sectors</span>
+          <h2 className="text-3xl xs:text-4xl md:text-5xl font-serif text-[#4A2E1F] font-black leading-tight">
+            Specializations & <span className="italic-display font-light text-[#8C6239]">Industries We Serve</span>
+          </h2>
+          <div className="w-16 h-[2px] bg-[#8C6239] mx-auto mt-3 mb-4" />
+          <p className="text-[#4A2E1F]/70 text-xs sm:text-sm max-w-xl mx-auto font-semibold">
+            Supplying standardized, food-grade coconut ingredients to diverse business scales and industrial kitchens nationwide.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {industries.map((industry, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="relative group h-[450px] overflow-hidden rounded-3xl cursor-default"
-            >
-              <img 
-                src={industry.image} 
-                alt={industry.title} 
-                className="absolute inset-0 w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-coconut-brown/90 via-coconut-brown/20 to-transparent flex flex-col justify-end p-8 text-warm-white">
-                <span className="text-[10px] uppercase tracking-widest font-bold text-gold-accent mb-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
-                  {industry.label}
-                </span>
-                <h3 className="font-serif text-2xl mb-3">{industry.title}</h3>
-                <p className="text-xs font-medium text-warm-white/70 line-clamp-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity">
-                  {industry.desc}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+        {/* Concise Grid Cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {specializationsAndIndustries.map((item, idx) => {
+            const IconComponent = item.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                className="bg-white border border-[#D8B26A]/25 hover:border-[#8C6239]/40 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-[#EFE6D5]/40 flex items-center justify-center text-[#8C6239] mb-4 group-hover:bg-[#6B4A2E] group-hover:text-white transition-colors duration-400">
+                    <IconComponent className="w-5 h-5 stroke-[1.5]" />
+                  </div>
+                  
+                  <h3 className="font-serif text-lg text-[#4A2E1F] font-bold mb-2">
+                    {item.title}
+                  </h3>
+                  
+                  <p className="text-xs text-[#4A2E1F]/70 leading-relaxed font-semibold">
+                    {item.desc}
+                  </p>
+                </div>
+                
+                <div className="pt-4 border-t border-[#8C6239]/5 mt-4 flex items-center gap-1.5 text-[9px] text-[#8C6239] font-bold tracking-wider uppercase">
+                  <CheckCircle2 size={10} className="text-[#25D366]" /> Approved Food-Grade Standard
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
+        
       </div>
     </section>
   );

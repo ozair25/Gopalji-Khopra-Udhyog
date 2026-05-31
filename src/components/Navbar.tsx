@@ -1,79 +1,93 @@
 import { motion } from 'motion/react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-warm-white/80 backdrop-blur-md border-b border-gold-accent/10 h-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 h-full">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#EFE6D5]/90 backdrop-blur-md border-b border-[#D8B26A]/20 h-20 shadow-sm transition-all duration-300" role="navigation" aria-label="Main Directory Menu">
+      <div className="max-w-7xl mx-auto px-3 xs:px-4 lg:px-12 h-full">
         <div className="flex justify-between items-center h-full">
-          <div className="flex items-center gap-4 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img src="/gopalji logo.webp" alt="Gopalji Logo" className="h-12 lg:h-14 w-auto transition-transform group-hover:scale-110" />
-            <div className="flex flex-col">
-              <span className="text-xl lg:text-2xl font-bold tracking-tighter text-coconut-brown leading-none">GOPALJI</span>
-              <span className="text-[8px] lg:text-[10px] tracking-[0.4em] uppercase font-semibold text-gold-accent">Khopra Udhyog</span>
+          {/* Brand Left Section */}
+          <Link 
+            to="/" 
+            className="flex items-center gap-1.5 xs:gap-2.5 lg:gap-3 group cursor-pointer select-none" 
+            aria-label="Gopalji Khopra Udyog home page"
+          >
+             <div className="bg-white/40 p-1 xs:p-1.5 rounded-lg sm:rounded-xl border border-white/50 shadow-sm transition-all group-hover:scale-105 shrink-0">
+              <img src="https://res.cloudinary.com/dtrvyelcg/image/upload/v1780234875/gopalji_new_logo_ukch69.png" alt="Gopalji Khopra Udyog logo" className="h-7 xs:h-8 sm:h-10 lg:h-12 w-auto relative z-10 object-contain" width="48" height="48" />
             </div>
-          </div>
+            <div className="flex flex-col">
+              <span className="text-[10px] xs:text-[12px] sm:text-sm md:text-base lg:text-lg font-serif font-black tracking-tight text-coconut-brown leading-none whitespace-nowrap">
+                GOPALJI KHOPRA UDYOG
+              </span>
+              <span className="text-[5.5px] xs:text-[7px] sm:text-[8px] lg:text-[10px] tracking-[0.25em] xs:tracking-[0.3em] uppercase font-bold text-gold-accent mt-0.5 whitespace-nowrap">
+                PREMIUM COCONUT INGREDIENTS
+              </span>
+            </div>
+          </Link>
 
-          <div className="hidden lg:flex items-center gap-10">
-            {[
-              { name: 'Products', href: '#products' },
-              { name: 'Quality Control', href: '#quality' },
-              { name: 'Industries', href: '#industries' },
-            ].map((item) => (
-              <a 
-                key={item.name} 
-                href={item.href} 
-                className="text-[10px] uppercase tracking-widest font-bold text-coconut-brown/70 hover:text-coconut-brown transition-colors"
-              >
-                {item.name}
-              </a>
-            ))}
-            <a 
-              href="#contact"
-              className="bg-coconut-brown text-warm-white px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-gold-accent transition-colors shadow-lg shadow-coconut-brown/10"
+          {/* Right Section (Common & Responsive) */}
+          <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-3 lg:gap-8">
+            {/* Nav menu links for desktop */}
+            <div className="hidden lg:flex items-center gap-8 mr-4" role="menubar">
+              {[
+                { name: 'Home', to: '/' },
+                { name: 'Products & Services', to: '/products-services' },
+                { name: 'About Us', to: '/about-us' },
+                { name: 'Contact Us', to: '/contact-us' },
+              ].map((item) => (
+                <Link 
+                  key={item.name} 
+                  to={item.to} 
+                  className="text-[10px] uppercase tracking-widest font-bold text-coconut-brown/70 hover:text-coconut-brown transition-colors focus:ring-2 focus:ring-[#8C6239] focus:outline-none px-1 rounded"
+                  role="menuitem"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+
+            {/* Hamburger menu button */}
+            <button 
+              className="p-1 xs:p-2 -mr-1 text-coconut-brown hover:text-gold-accent transition-colors flex items-center justify-center shrink-0 focus:ring-2 focus:ring-[#8C6239] focus:outline-none rounded" 
+              onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             >
-              Bulk Inquiry
-            </a>
+              {isOpen ? <X size={20} className="sm:size-[24px] stroke-[2.5]" /> : <Menu size={20} className="sm:size-[24px] stroke-[2.5]" />}
+            </button>
           </div>
-
-          <button className="md:hidden text-coconut-brown" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Dropdown */}
       {isOpen && (
         <motion.div 
-          initial={{ opacity: 0, y: -20 }}
+          id="mobile-navigation"
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-warm-white border-b border-gold-accent/10 py-6 px-6 flex flex-col gap-4 shadow-xl"
+          exit={{ opacity: 0, y: -15 }}
+          className="lg:hidden absolute top-20 left-0 right-0 bg-[#EFE6D5] border-b border-[#D8B26A]/20 py-6 px-6 flex flex-col gap-4 shadow-xl z-40"
         >
           {[
-            { name: 'Products', href: '#products' },
-            { name: 'Quality Control', href: '#quality' },
-            { name: 'Industries', href: '#industries' },
-            { name: 'About', href: '#about' },
+            { name: 'Home', to: '/' },
+            { name: 'Products & Services', to: '/products-services' },
+            { name: 'About Us', to: '/about-us' },
+            { name: 'Contact Us', to: '/contact-us' },
           ].map((item) => (
-            <a 
+            <Link 
               key={item.name} 
-              href={item.href} 
-              className="text-sm uppercase tracking-widest font-semibold text-coconut-brown/70"
+              to={item.to} 
+              className="text-xs uppercase tracking-widest font-bold text-coconut-brown/80 hover:text-coconut-brown py-2 border-b border-[#D8B26A]/10 last:border-0 focus:outline-none focus:text-coconut-brown"
               onClick={() => setIsOpen(false)}
             >
               {item.name}
-            </a>
+            </Link>
           ))}
-          <a 
-            href="#contact"
-            className="bg-coconut-brown text-warm-white px-6 py-3 rounded-full text-sm uppercase tracking-widest font-bold text-center"
-            onClick={() => setIsOpen(false)}
-          >
-            Bulk Inquiry
-          </a>
         </motion.div>
       )}
     </nav>

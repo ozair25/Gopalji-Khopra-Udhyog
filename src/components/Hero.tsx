@@ -1,147 +1,118 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Send, MessageCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import ScrollIndicator from './ScrollIndicator';
+
+const bg2 = "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780237121/final_hero_eeh4an.png";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col pt-20 overflow-hidden">
-      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
-        {/* Left Section: 60% Content */}
-        <div className="w-full lg:w-[60%] bg-[#E5D5BC] p-8 lg:p-20 flex flex-col justify-center relative min-h-[600px]">
-          <div className="absolute top-10 right-10 opacity-5 pointer-events-none">
-            <svg width="400" height="400" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="45" stroke="#6B4A2E" strokeWidth="0.5" fill="none"/>
-              <path d="M50 5 L50 95 M5 50 L95 50" stroke="#6B4A2E" strokeWidth="0.2"/>
-            </svg>
+    <section id="hero" className="relative ml-0 min-h-screen bg-[#E3D3BE] text-[#1C110A] flex flex-col justify-between overflow-hidden border-b border-[#8C6239]/15" aria-label="Gopalji Khopra Premium Hero">
+      
+      {/* 1. Split-Screen Hero Layout */}
+      <div className="w-full max-w-7xl mx-auto px-4 xs:px-6 sm:px-12 pt-28 pb-8 xs:pt-32 xs:pb-8 sm:pt-36 sm:pb-12 lg:pt-40 lg:pb-16 xl:pt-44 xl:pb-20 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center lg:items-start relative z-10">
+        
+        {/* Left Column: Premium Typography & CTAs (50-55% width) */}
+        <div className="lg:col-span-5 flex flex-col text-left space-y-6 xs:space-y-8 max-w-xl order-1">
+          <div className="flex items-center gap-2 xs:gap-3">
+            <div className="h-[1px] w-8 xs:w-11 bg-[#6B4A2E]"></div>
+            <span className="text-[8.5px] xs:text-[10px] font-bold uppercase tracking-[0.2em] xs:tracking-[0.35em] text-[#6B4A2E]/85">
+              Est. 2017 | Premium Manufacturer
+            </span>
           </div>
 
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8 relative z-10"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-4"
           >
-            <div className="flex items-center gap-3">
-              <div className="h-[1px] w-12 bg-coconut-brown"></div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-coconut-brown/60">
-                Est. 1984 | Premier Manufacturer
-              </span>
-            </div>
-
-            <h1 className="text-5xl lg:text-7xl font-serif leading-[1.1] text-coconut-brown">
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl font-serif font-black leading-[1.1] text-[#4A2E1F] drop-shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
               Premium Food-Grade <br />
-              <i className="font-light italic-display">Coconut Ingredients</i>
+              <span className="text-[#8C6239] italic font-light italic-display">Coconut Ingredients</span>
             </h1>
-
-            <p className="text-lg text-coconut-brown/80 max-w-lg leading-relaxed font-medium">
-              Wholesale manufacturing for bakeries, confectioneries, and industrial food producers. Pure Indian quality, exported globally.
+            <p className="text-sm xs:text-base sm:text-lg text-[#3D2B1F]/95 leading-relaxed font-semibold pt-2">
+              Wholesale manufacturing for bakeries, confectioneries, and industrial food producers. Pure Central Indian quality, delivered with absolute hygiene and moisture precision across the nation.
             </p>
+          </motion.div>
 
-            <div className="flex flex-wrap gap-4 pt-4">
-              <a 
-                href="#contact"
-                className="bg-coconut-brown text-warm-white px-10 py-5 text-xs font-bold uppercase tracking-widest shadow-2xl shadow-coconut-brown/20 hover:bg-gold-accent transition-colors flex items-center gap-2"
-              >
-                Bulk Inquiry
-                <ArrowRight size={14} />
-              </a>
-              <a 
-                href="#specifications"
-                className="border border-coconut-brown/30 px-10 py-5 text-xs font-bold uppercase tracking-widest text-coconut-brown hover:bg-warm-white/30 transition-colors"
-              >
-                Product Specs
-              </a>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-wrap sm:flex-nowrap gap-3 xs:gap-4 pt-2"
+          >
+            <Link 
+              to="/contact-us"
+              className="bg-[#6B4A2E] text-white px-5 xs:px-8 py-3.5 xs:py-4 text-xs font-bold uppercase tracking-widest shadow-xl shadow-[#6B4A2E]/20 hover:bg-[#8C6239] transition-all hover:translate-y-[-2px] flex items-center justify-center gap-2 shrink-0 rounded-lg animate-pulse"
+            >
+              Bulk Inquiry
+              <ArrowRight size={14} />
+            </Link>
+            <Link 
+              to="/products-services"
+              className="border border-[#6B4A2E]/30 bg-[#6B4A2E]/10 backdrop-blur-sm px-5 xs:px-8 py-3.5 xs:py-4 text-xs font-bold uppercase tracking-widest text-[#4A2E1F] hover:bg-[#6B4A2E]/20 transition-all hover:translate-y-[-2px] text-center shrink-0 rounded-lg"
+            >
+              Explore Products
+            </Link>
+          </motion.div>
+
+          {/* Core Trust Parameters */}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="grid grid-cols-3 gap-4 sm:gap-6 pt-6 xs:pt-8 border-t border-[#6B4A2E]/10"
+          >
+            <div>
+              <div className="text-xl xs:text-2xl sm:text-3xl font-bold font-serif text-[#4A2E1F]">100%</div>
+              <div className="text-[8px] xs:text-[9px] uppercase tracking-wider font-extrabold opacity-65 text-[#4A2E1F] mt-1">Pure Grade</div>
             </div>
-
-            <div className="grid grid-cols-3 gap-8 mt-16 pt-10 border-t border-coconut-brown/10">
-              <div className="text-center lg:text-left">
-                <div className="text-3xl font-bold font-serif">100%</div>
-                <div className="text-[9px] uppercase tracking-wider font-bold opacity-40">Pure Grade</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl font-bold font-serif">50+</div>
-                <div className="text-[9px] uppercase tracking-wider font-bold opacity-40">Global Partners</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl font-bold font-serif italic text-gold-accent">ISO</div>
-                <div className="text-[9px] uppercase tracking-wider font-bold opacity-40">Certified Lab</div>
-              </div>
+            <div>
+              <div className="text-xl xs:text-2xl sm:text-3xl font-bold font-serif text-[#4A2E1F]">50+</div>
+              <div className="text-[8px] xs:text-[9px] uppercase tracking-wider font-extrabold opacity-65 text-[#4A2E1F] mt-1">Global Partners</div>
+            </div>
+            <div>
+              <div className="text-xl xs:text-2xl sm:text-3xl font-bold font-serif italic text-[#8C6239] font-medium">ISO</div>
+              <div className="text-[8px] xs:text-[9px] uppercase tracking-wider font-extrabold opacity-65 text-[#4A2E1F] mt-1">Certified Lab</div>
             </div>
           </motion.div>
         </div>
 
-        {/* Right Section: 40% Lead Gen Form */}
-        <div className="w-full lg:w-[40%] bg-warm-white p-8 lg:p-16 flex flex-col justify-between border-l border-gold-accent/10 shadow-[-20px_0_40px_rgba(0,0,0,0.02)] min-h-[600px]">
-          <div className="space-y-10">
-            <div>
-              <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-gold-accent mb-3">Lead Generation</h3>
-              <h2 className="text-3xl font-serif text-coconut-brown">Strategic B2B Inquiry</h2>
-              <p className="text-xs text-coconut-brown/50 mt-3 font-medium">Request current market pricing and bulk shipping details.</p>
-            </div>
+        {/* Right Column: Premium Visual Showcase with bg2.png (55-60% width) */}
+        <div className="lg:col-span-7 flex items-start justify-center lg:justify-end relative w-full order-2 mt-8 lg:mt-0 lg:pt-[54px]">
+          {/* Subtle elegant rotating background halo as background but NOT inside a boxed frame */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#E5D5BC]/20 to-transparent opacity-50 rounded-full blur-3xl -z-10 pointer-events-none transform scale-95 lg:translate-x-12"></div>
 
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[9px] uppercase font-bold text-coconut-brown/40 block">Business Name</label>
-                  <input type="text" className="w-full border-b border-gold-accent/20 py-3 text-sm focus:border-gold-accent outline-none bg-transparent transition-colors" placeholder="Global Foods Ltd" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[9px] uppercase font-bold text-coconut-brown/40 block">Contact Person</label>
-                  <input type="text" className="w-full border-b border-gold-accent/20 py-3 text-sm focus:border-gold-accent outline-none bg-transparent transition-colors" placeholder="Commercial Lead" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[9px] uppercase font-bold text-coconut-brown/40 block">Product Type</label>
-                  <select className="w-full border-b border-gold-accent/20 py-3 text-sm focus:border-gold-accent outline-none bg-transparent transition-colors appearance-none">
-                    <option>Coconut Flakes</option>
-                    <option>Coconut Powder</option>
-                    <option>Desiccated Coconut</option>
-                  </select>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[9px] uppercase font-bold text-coconut-brown/40 block">Monthly Qty (MT)</label>
-                  <input type="number" className="w-full border-b border-gold-accent/20 py-3 text-sm focus:border-gold-accent outline-none bg-transparent transition-colors" placeholder="50" />
-                </div>
-              </div>
-
-              <button 
-                type="submit"
-                className="w-full py-5 bg-coconut-brown text-warm-white text-[10px] font-bold uppercase tracking-[0.3em] shadow-xl hover:bg-gold-accent transition-all flex items-center justify-center gap-3"
-              >
-                Submit Inquiry Profile <Send size={14} />
-              </button>
-              
-              <div className="flex items-center justify-center gap-4 py-2">
-                <div className="h-[1px] flex-1 bg-gold-accent/10"></div>
-                <span className="text-[8px] font-bold uppercase tracking-widest text-gold-accent/40">Or</span>
-                <div className="h-[1px] flex-1 bg-gold-accent/10"></div>
-              </div>
-
-              <a 
-                href="https://wa.me/919876543210"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-4 bg-[#25D366] text-white text-[10px] font-bold uppercase tracking-[0.3em] shadow-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3"
-              >
-                Instant WhatsApp Chat <MessageCircle size={14} />
-              </a>
-            </form>
-          </div>
-
-          <div className="pt-10 border-t border-gold-accent/10 mt-12">
-            <div className="flex items-center gap-5">
-              <div className="p-3 bg-cream-light rounded-xl text-gold-accent">
-                <MessageCircle size={24} />
-              </div>
-              <div>
-                <p className="text-[9px] font-bold uppercase text-coconut-brown/40 tracking-widest">Direct Commercial WhatsApp</p>
-                <p className="text-base font-bold text-coconut-brown tracking-tight">+91 98765 43210</p>
-              </div>
-            </div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full flex justify-center lg:justify-end bg-[#E3D3BE]"
+            style={{ backgroundColor: '#E3D3BE' }}
+          >
+            <img 
+              src={bg2} 
+              alt="Gopalji Khopra Premium Product Composition" 
+              className="w-full object-contain object-right-bottom select-none cursor-default origin-bottom transition-transform duration-500 scale-100 translate-y-8 sm:scale-105 sm:translate-y-4 lg:scale-[1.40] lg:-translate-y-[10%]"
+              style={{ 
+                backgroundColor: '#E3D3BE', 
+                mixBlendMode: 'darken',
+                maxHeight: '696px',
+              }}
+              loading="eager"
+              width="947"
+              height="691"
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
         </div>
+
       </div>
+
+      {/* Dynamic Scroll Indicator linking to the Home Overview Section */}
+      <ScrollIndicator targetId="home-overview" className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 hidden md:flex" label="Explore Gopalji" />
+
     </section>
   );
 }

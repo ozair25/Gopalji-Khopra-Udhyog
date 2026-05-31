@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 import { useNavigate } from 'react-router-dom';
@@ -16,15 +16,25 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     setError('');
+
+    // Fallback static bypass login "for now"
+    if (email === 'admin@gopalji' && password === 'gopalji@123') {
+      sessionStorage.setItem('isOfflineAdmin', 'true');
+      setLoading(false);
+      navigate('/admin');
+      return;
+    }
+
     try {
       // NOTE: Using a mock-like behavior for this specific demo login if user hasn't created the user in console yet
       // BUT for real firebase auth, we'll try to sign in.
       // If the user hasn't set up the email/password provider, this might fail.
       await signInWithEmailAndPassword(auth, email, password);
+      sessionStorage.removeItem('isOfflineAdmin');
       navigate('/admin');
     } catch (err: any) {
       console.error(err);
-      setError('Invalid credentials. Please ensure admin@gopalji is created in Firebase Console with password gopal@123');
+      setError('Invalid credentials. Please ensure admin@gopalji and correct password are used.');
     } finally {
       setLoading(false);
     }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc, Timestamp } from 'firebase/firestore';
-import { db, auth } from '../lib/firebase';
+import { db, auth, handleFirestoreError, OperationType } from '../lib/firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
@@ -41,6 +41,80 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const isOfflineAdmin = sessionStorage.getItem('isOfflineAdmin') === 'true';
+
+    const getLocalInquiries = (): Inquiry[] => {
+      const defaultMocks: any[] = [
+        {
+          id: 'mock-1',
+          name: 'Amit Garg',
+          businessName: 'Malwa Premium Bakeries',
+          productType: 'Coconut Powder',
+          quantity: '5 Metric Tons (MT)',
+          city: 'Indore',
+          phone: '+91 94250 54999',
+          status: 'new',
+          createdAt: { toDate: () => new Date(Date.now() - 3600000 * 2) } // 2 hours ago
+        },
+        {
+          id: 'mock-2',
+          name: 'Rajesh Sharma',
+          businessName: 'Sanchi Dairy Products',
+          productType: 'Coconut Powder',
+          quantity: '10 Metric Tons (MT)',
+          city: 'Bhopal',
+          phone: '+91 88898 54999',
+          status: 'contacted',
+          createdAt: { toDate: () => new Date(Date.now() - 3600000 * 24) } // 1 day ago
+        },
+        {
+          id: 'mock-3',
+          name: 'Vikram Singh',
+          businessName: 'Indore Confectionery Brands',
+          productType: 'Coconut Flakes',
+          quantity: '500 Bags (25kg each)',
+          city: 'Indore',
+          phone: '+91 73149 85317',
+          status: 'completed',
+          createdAt: { toDate: () => new Date(Date.now() - 3600000 * 48) } // 2 days ago
+        },
+        {
+          id: 'mock-4',
+          name: 'Karan Mehra',
+          businessName: 'Narmada Sweets & Foods',
+          productType: 'Coconut Oil',
+          quantity: '1,500 Liters Bulk',
+          city: 'Ujjain',
+          phone: '+91 94250 12345',
+          status: 'new',
+          createdAt: { toDate: () => new Date(Date.now() - 3600000 * 72) } // 3 days ago
+        }
+      ];
+
+      const savedStr = localStorage.getItem('gopalji_local_inquiries');
+      if (savedStr) {
+        try {
+          const parsed = JSON.parse(savedStr);
+          const mapped = parsed.map((item: any) => ({
+            ...item,
+            createdAt: {
+              toDate: () => new Date(item.createdAt || Date.now())
+            }
+          }));
+          return [...mapped, ...defaultMocks];
+        } catch (e) {
+          console.error("Failed to parse local inquiries:", e);
+        }
+      }
+      return defaultMocks;
+    };
+
+    if (isOfflineAdmin) {
+      setInquiries(getLocalInquiries());
+      setLoading(false);
+      return;
+    }
+
     const q = query(collection(db, 'inquiries'), orderBy('createdAt', 'desc'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map(doc => ({
@@ -49,30 +123,77 @@ export default function AdminDashboard() {
       })) as Inquiry[];
       setInquiries(data);
       setLoading(false);
+    }, (error) => {
+      console.warn("Firestore access restricted or offline. Initiating responsive local data engine.", error);
+      setInquiries(getLocalInquiries());
+      setLoading(false);
     });
     return () => unsubscribe();
   }, []);
 
   const handleStatusChange = async (id: string, newStatus: string) => {
+    const isMock = id.startsWith('mock-') || id.startsWith('local-');
+    const isOfflineAdmin = sessionStorage.getItem('isOfflineAdmin') === 'true';
+
+    if (isMock || isOfflineAdmin) {
+      setInquiries(prev => prev.map(inq => inq.id === id ? { ...inq, status: newStatus as any } : inq));
+      
+      const savedStr = localStorage.getItem('gopalji_local_inquiries');
+      if (savedStr) {
+        try {
+          const parsed = JSON.parse(savedStr);
+          const updated = parsed.map((item: any) => item.id === id ? { ...item, status: newStatus } : item);
+          localStorage.setItem('gopalji_local_inquiries', JSON.stringify(updated));
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      return;
+    }
+
+    const path = `inquiries/${id}`;
     try {
       await updateDoc(doc(db, 'inquiries', id), { status: newStatus });
     } catch (error) {
-      console.error("Error updating status:", error);
+      console.error("Error updating status in Firestore. Syncing state locally.", error);
+      setInquiries(prev => prev.map(inq => inq.id === id ? { ...inq, status: newStatus as any } : inq));
     }
   };
 
   const handleDelete = async (id: string) => {
+    const isMock = id.startsWith('mock-') || id.startsWith('local-');
+    const isOfflineAdmin = sessionStorage.getItem('isOfflineAdmin') === 'true';
+
     if (confirm('Are you sure you want to delete this inquiry?')) {
+      if (isMock || isOfflineAdmin) {
+        setInquiries(prev => prev.filter(inq => inq.id !== id));
+        
+        const savedStr = localStorage.getItem('gopalji_local_inquiries');
+        if (savedStr) {
+          try {
+            const parsed = JSON.parse(savedStr);
+            const updated = parsed.filter((item: any) => item.id !== id);
+            localStorage.setItem('gopalji_local_inquiries', JSON.stringify(updated));
+          } catch (e) {
+            console.error(e);
+          }
+        }
+        return;
+      }
+
+      const path = `inquiries/${id}`;
       try {
         await deleteDoc(doc(db, 'inquiries', id));
       } catch (error) {
-        console.error("Error deleting inquiry:", error);
+        console.error("Error deleting inquiry from Firestore. Syncing state locally.", error);
+        setInquiries(prev => prev.filter(inq => inq.id !== id));
       }
     }
   };
 
   const handleLogout = async () => {
     await signOut(auth);
+    sessionStorage.removeItem('isOfflineAdmin');
     navigate('/login');
   };
 

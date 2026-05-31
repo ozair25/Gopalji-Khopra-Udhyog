@@ -1,3 +1,4 @@
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../lib/firebase';
@@ -5,6 +6,7 @@ import { Loader2 } from 'lucide-react';
 
 export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const [user, loading] = useAuthState(auth);
+  const isOfflineAdmin = sessionStorage.getItem('isOfflineAdmin') === 'true';
 
   if (loading) {
     return (
@@ -14,7 +16,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
     );
   }
 
-  if (!user) {
+  if (!user && !isOfflineAdmin) {
     return <Navigate to="/login" replace />;
   }
 
