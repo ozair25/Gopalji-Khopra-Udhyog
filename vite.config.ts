@@ -16,24 +16,36 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      minify: 'esbuild',
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+          pure_funcs: ['console.log', 'console.info'],
+        },
+        mangle: true,
+        format: { comments: false },
+      },
       target: 'es2015',
       cssMinify: true,
-      reportCompressedSize: false,
-      chunkSizeWarningLimit: 1000,
+      cssCodeSplit: true,
+      chunkSizeWarningLimit: 500,
       rollupOptions: {
         output: {
-          manualChunks: {
-            'react-vendor': ['react', 'react-dom'],
-            'router': ['react-router-dom'],
-            'motion': ['motion'],
-            'firebase': ['firebase/app', 'firebase/firestore'],
-          }
-        }
-      }
+          manualChunks(id) {
+            if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) return 'react-vendor';
+            if (id.includes('node_modules/react-router-dom/') || id.includes('node_modules/react-router/')) return 'router';
+            if (id.includes('node_modules/motion/') || id.includes('node_modules/framer-motion/')) return 'motion';
+            if (id.includes('node_modules/firebase/')) return 'firebase';
+            if (id.includes('node_modules/recharts/') || id.includes('node_modules/d3')) return 'charts';
+            if (id.includes('node_modules/lucide-react/')) return 'icons';
+          },
+        },
+      },
     },
     optimizeDeps: {
       include: ['react', 'react-dom', 'react-router-dom'],
+      exclude: ['firebase/firestore'],
     },
     server: {
       hmr: process.env.DISABLE_HMR !== 'true',
