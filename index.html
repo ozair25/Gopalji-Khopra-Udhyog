@@ -5,13 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#E3D3BE">
 
-    <!-- Preconnect first -->
+    <!-- Critical inline CSS to eliminate render-blocking -->
+    <style>
+      *,::after,::before{box-sizing:border-box;margin:0;padding:0}
+      body{background:#E3D3BE;font-family:sans-serif;color:#1C110A}
+      #il{min-height:100vh;background:#E3D3BE;padding:80px 20px 40px;max-width:1280px;margin:0 auto}
+      #il h1{font-family:Georgia,serif;font-size:clamp(32px,7vw,60px);color:#4A2E1F;font-weight:900;line-height:1.1;margin-bottom:16px}
+      #il .sub{color:#8C6239;font-style:italic;font-weight:300}
+      #il p{font-size:15px;color:#3D2B1F;line-height:1.6;font-weight:600;margin-bottom:28px;max-width:540px}
+      #il .tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#6B4A2E;display:flex;align-items:center;gap:12px;margin-bottom:20px}
+      #il .tag span{height:1px;width:40px;background:#6B4A2E;display:inline-block}
+      #il .btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:32px}
+      #il .btn1{background:#6B4A2E;color:#fff;padding:13px 26px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:8px}
+      #il .btn2{border:1px solid rgba(107,74,46,.3);background:rgba(107,74,46,.1);color:#4A2E1F;padding:13px 26px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:8px}
+      #il .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:24px;border-top:1px solid rgba(107,74,46,.1);margin-bottom:32px}
+      #il .stat-val{font-size:26px;font-weight:700;color:#4A2E1F;font-family:Georgia,serif}
+      #il .stat-val.gold{color:#8C6239;font-style:italic}
+      #il .stat-lbl{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#4A2E1F;opacity:.65;margin-top:4px}
+      #il img{width:100%;max-height:420px;object-fit:contain;mix-blend-mode:darken;background:#E3D3BE;display:block;margin-top:8px}
+      @media(min-width:1024px){
+        #il{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:center;padding-top:100px}
+        #il img{max-height:580px;transform:scale(1.25) translateY(-10%) translateX(-10%);transform-origin:center bottom}
+      }
+    </style>
+
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
     <link rel="dns-prefetch" href="https://res.cloudinary.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Hero image preload — mobile first -->
+    <!-- Hero image preload -->
     <link
       rel="preload"
       as="image"
@@ -25,17 +47,47 @@
       fetchpriority="high"
     />
 
-    <!-- Fonts non-blocking -->
+    <!-- Fonts: fully non-blocking -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" media="print" onload="this.media='all'">
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap">
-    </noscript>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap"></noscript>
 
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_64/v1780234875/gopalji_new_logo_ukch69.png" />
     <title>Gopalji Khopra Udhyog | Premium Coconut Ingredients Manufacturer India</title>
   </head>
   <body>
-    <div id="root"><style>#initial-loader{min-height:100vh;background:#E3D3BE;font-family:sans-serif}#initial-loader h1{font-family:Georgia,serif}</style><div id="initial-loader"><div style="max-width:1280px;margin:0 auto;padding:80px 20px 40px;display:flex;flex-direction:column;gap:32px"><div style="display:flex;align-items:center;gap:12px"><div style="height:1px;width:40px;background:#6B4A2E"></div><span style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#6B4A2E">Est. 2017 | Premium Manufacturer</span></div><div style="display:grid;grid-template-columns:1fr;gap:32px"><div style="display:flex;flex-direction:column;gap:24px"><h1 style="font-size:clamp(36px,8vw,64px);color:#4A2E1F;font-weight:900;line-height:1.1;margin:0">Premium Food-Grade<br><span style="color:#8C6239;font-style:italic;font-weight:300">Coconut Ingredients</span></h1><p style="font-size:16px;color:#3D2B1F;line-height:1.6;margin:0;font-weight:600">Wholesale manufacturing for bakeries, confectioneries, and industrial food producers. Pure Central Indian quality.</p><div style="display:flex;gap:16px;flex-wrap:wrap"><a href="#contact" style="background:#6B4A2E;color:white;padding:14px 28px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:8px">Bulk Inquiry →</a><a href="/products-services" style="border:1px solid rgba(107,74,46,0.3);background:rgba(107,74,46,0.1);color:#4A2E1F;padding:14px 28px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:8px">Explore Products</a></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:24px;border-top:1px solid rgba(107,74,46,0.1)"><div><div style="font-size:28px;font-weight:700;color:#4A2E1F;font-family:Georgia,serif">100%</div><div style="font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#4A2E1F;opacity:0.65;margin-top:4px">Pure Grade</div></div><div><div style="font-size:28px;font-weight:700;color:#4A2E1F;font-family:Georgia,serif">50+</div><div style="font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#4A2E1F;opacity:0.65;margin-top:4px">Global Partners</div></div><div><div style="font-size:28px;font-weight:700;color:#8C6239;font-style:italic;font-family:Georgia,serif">ISO</div><div style="font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#4A2E1F;opacity:0.65;margin-top:4px">Certified Lab</div></div></div></div><img src="https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_400/v1780232972/hero_image_sy7ovp.png" alt="Gopalji Khopra Premium Coconut Products" width="947" height="691" fetchpriority="high" style="width:100%;max-height:450px;object-fit:contain;mix-blend-mode:darken;background:#E3D3BE"></div></div></div></div>
+    <div id="root">
+      <div id="il">
+        <div>
+          <div class="tag"><span></span>Est. 2017 | Premium Manufacturer</div>
+          <h1>Premium Food-Grade<br><span class="sub">Coconut Ingredients</span></h1>
+          <p>Wholesale manufacturing for bakeries, confectioneries, and industrial food producers. Pure Central Indian quality, delivered with absolute hygiene and moisture precision.</p>
+          <div class="btns">
+            <a href="#contact" class="btn1">Bulk Inquiry →</a>
+            <a href="/products-services" class="btn2">Explore Products</a>
+          </div>
+          <div class="stats">
+            <div><div class="stat-val">100%</div><div class="stat-lbl">Pure Grade</div></div>
+            <div><div class="stat-val">50+</div><div class="stat-lbl">Global Partners</div></div>
+            <div><div class="stat-val gold">ISO</div><div class="stat-lbl">Certified Lab</div></div>
+          </div>
+        </div>
+        <img
+          src="https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_400/v1780232972/hero_image_sy7ovp.png"
+          srcset="
+            https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_400/v1780232972/hero_image_sy7ovp.png 400w,
+            https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_800/v1780232972/hero_image_sy7ovp.png 800w,
+            https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_1200/v1780232972/hero_image_sy7ovp.png 1200w
+          "
+          sizes="(max-width: 768px) 100vw, 50vw"
+          alt="Gopalji Khopra Premium Coconut Products - Flakes, Powder, Oil"
+          width="947"
+          height="691"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
