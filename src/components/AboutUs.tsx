@@ -31,32 +31,32 @@ export default function AboutUs() {
   const documents = [
     {
       title: "FSSAI Registration",
-      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780225882/fssi_cert_t4zxtc.webp",
+      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780225882/fssi_cert_t4zxtc.webp",
       desc: "Primary food security registration and hygiene clearance for bulk food processing."
     },
     {
       title: "ISO Certification",
-      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780225883/iso_cert_gopji_nvhsyh.webp",
+      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780225883/iso_cert_gopji_nvhsyh.webp",
       desc: "Adherence to international standardized processing systems and quality management protocols."
     },
     {
       title: "GST Tax Registration",
-      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780225882/gst_gopalji_fmhonz.webp",
+      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780225882/gst_gopalji_fmhonz.webp",
       desc: "Active GSTIN registered July 2017. 100% tax compliant billing for state & national clients."
     },
     {
       title: "MSME UDYAM Certificate",
-      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780225882/recog_qqtuew.webp",
+      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780225882/recog_qqtuew.webp",
       desc: "SUDARSHAN/MSME registered B2B food enterprise supported by government frameworks."
     },
     {
       title: "Official Affiliation",
-      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780225882/affiliation_jci8ka.webp",
+      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780225882/affiliation_jci8ka.webp",
       desc: "Official registration certificate confirming standardized parameters & trusted enterprise values."
     },
     {
       title: "Trade Association Membership",
-      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780225883/trade_membership_mdcbjm.webp",
+      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780225883/trade_membership_mdcbjm.webp",
       desc: "Verified chamber of commerce and trade bodies membership securing local compliance."
     }
   ];
@@ -86,7 +86,7 @@ export default function AboutUs() {
           <div className="lg:col-span-5 relative">
             <div className="aspect-[4/3] sm:aspect-[4/5] rounded-[2rem] overflow-hidden border border-[#8C6239]/20 shadow-lg bg-white">
               <img 
-                src="https://res.cloudinary.com/dtrvyelcg/image/upload/v1780226284/about_us_ha5qpb.png" 
+                src="https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780226284/about_us_ha5qpb.png" 
                 alt="Indore Coconut Processing and Dehydrated Desiccated Powder Sorting Factory - Gopalji" 
                 className="w-full h-full object-cover select-none"
                 loading="lazy"
@@ -228,6 +228,8 @@ export default function AboutUs() {
                       alt={doc.title}
                       className="w-full h-full object-contain select-none"
                       loading="lazy"
+                      width="350"
+                      height="466"
                     />
                   </div>
                   
@@ -303,6 +305,9 @@ export default function AboutUs() {
                     src={selectedDoc.image} 
                     alt={selectedDoc.title}
                     className="max-h-[65vh] max-w-full object-contain rounded shadow-lg border border-white/10"
+                    loading="lazy"
+                    width="600"
+                    height="800"
                   />
                 </div>
 

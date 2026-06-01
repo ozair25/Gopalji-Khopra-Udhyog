@@ -37,6 +37,8 @@ export default function ProductCard({ product, onEnquire }: ProductCardProps) {
             }`}
             loading="lazy"
             draggable={false}
+            width="400"
+            height="300"
           />
         ))}
 

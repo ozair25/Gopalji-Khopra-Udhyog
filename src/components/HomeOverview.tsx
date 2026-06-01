@@ -42,22 +42,22 @@ export default function HomeOverview() {
     {
       title: "Coconut Powder",
       desc: "Ultra-fine pulverized premium grade coconut meat. Highly soluble with uniform powder grain.",
-      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780224946/coco_powder_pre_mlysdv.jpg"
+      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780224946/coco_powder_pre_mlysdv.jpg"
     },
     {
       title: "Coconut Flakes",
       desc: "Exquisite long-cut snow-white flakes dried carefully to preserve rich aroma and texture.",
-      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780224601/coco_flakes_ejjrjb.jpg"
+      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780224601/coco_flakes_ejjrjb.jpg"
     },
     {
       title: "Coconut Oil",
       desc: "100% pure cold-pressed coconut oil possessing intense flavor aroma and high fat profile.",
-      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780224353/coconut_oil_pre_i4p9cx.jpg"
+      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780224353/coconut_oil_pre_i4p9cx.jpg"
     },
     {
       title: "Desiccated Coconut",
       desc: "Finely shredded, moisture-optimized dehydrated meat delivering luxurious rich taste.",
-      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780225046/dessicated_pre_puwjli.png"
+      image: "https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780225046/dessicated_pre_puwjli.png"
     }
   ];
 

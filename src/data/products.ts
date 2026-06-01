@@ -477,6 +477,25 @@ export const categories: Category[] = [
 // HELPERS
 // ─────────────────────────────────────────
 
+// Auto-optimize all Cloudinary image URLs on load to use f_auto,q_auto,w_600
+const optimizeCloudinaryUrl = (url: string): string => {
+  if (url && url.includes('res.cloudinary.com')) {
+    if (url.includes('/upload/f_auto,q_auto') && !url.includes('w_600')) {
+      return url.replace('/upload/f_auto,q_auto', '/upload/f_auto,q_auto,w_600');
+    }
+    if (!url.includes('/upload/f_auto,q_auto')) {
+      return url.replace('/upload', '/upload/f_auto,q_auto,w_600');
+    }
+  }
+  return url;
+};
+
+categories.forEach((cat) => {
+  cat.products.forEach((prod) => {
+    prod.images = prod.images.map(optimizeCloudinaryUrl);
+  });
+});
+
 // Get all products flat
 export const getAllProducts = (): Product[] =>
   categories.flatMap((cat) => cat.products)

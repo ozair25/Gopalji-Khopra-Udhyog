@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#EFE6D5]/90 backdrop-blur-md border-b border-[#D8B26A]/20 h-20 shadow-sm transition-all duration-300" role="navigation" aria-label="Main Directory Menu">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#EFE6D5]/90 backdrop-blur-md border-b border-[#D8B26A]/20 h-[76px] xs:h-[88px] sm:h-[108px] lg:h-[120px] shadow-sm transition-all duration-300" role="navigation" aria-label="Main Directory Menu">
       <div className="max-w-7xl mx-auto px-3 xs:px-4 lg:px-12 h-full">
         <div className="flex justify-between items-center h-full">
           {/* Brand Left Section */}
@@ -16,8 +16,8 @@ export default function Navbar() {
             className="flex items-center gap-1.5 xs:gap-2.5 lg:gap-3 group cursor-pointer select-none" 
             aria-label="Gopalji Khopra Udyog home page"
           >
-              <div className="transition-all group-hover:scale-105 shrink-0">
-               <img src="https://res.cloudinary.com/dtrvyelcg/image/upload/v1780234875/gopalji_new_logo_ukch69.png" alt="Gopalji Khopra Udyog logo" className="h-[54px] xs:h-[66px] sm:h-[84px] lg:h-[96px] w-auto relative z-10 object-contain" width="96" height="96" />
+            <div className="transition-all group-hover:scale-105 shrink-0">
+              <img src="https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_600/v1780234875/gopalji_new_logo_ukch69.png" alt="Gopalji Khopra Udyog logo" className="h-[54px] xs:h-[66px] sm:h-[84px] lg:h-[96px] w-auto relative z-10 object-contain" width="96" height="96" loading="lazy" />
             </div>
             <div className="flex flex-col">
               <span className="text-[12px] xs:text-[14px] sm:text-lg md:text-xl lg:text-2xl font-serif font-black tracking-tight text-coconut-brown leading-none whitespace-nowrap">

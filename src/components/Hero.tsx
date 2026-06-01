@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollIndicator from './ScrollIndicator';
 
-const bg2 = "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780237121/final_hero_eeh4an.png";
+const bg2 = "https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto:good,w_900/v1780232972/hero_image_sy7ovp.png";
 
 export default function Hero() {
   return (
@@ -101,6 +101,8 @@ export default function Hero() {
                 maxHeight: '696px',
               }}
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
               width="947"
               height="691"
               referrerPolicy="no-referrer"

@@ -86,6 +86,9 @@ export default function QualityControl() {
                       src="" 
                       alt="Bulk Sack" 
                       className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                      width="200"
+                      height="250"
                     />
                     <div className="relative z-10 w-full bg-coconut-brown/80 backdrop-blur-sm p-4 rounded-xl border border-warm-white/10">
                        <span className="text-[10px] uppercase tracking-widest font-bold">Bulk Sacks</span>
