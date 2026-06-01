@@ -4,27 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#E3D3BE">
-    
-    <!-- Preload LCP hero image with high fetch priority -->
-    <link
-      rel="preload"
-      as="image"
-      href="https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto:good,w_900/v1780232972/hero_image_sy7ovp.png"
-      fetchpriority="high"
-    />
 
-    <!-- DNS prefetch & Preconnect for Image CDNs + Fonts -->
-    <link rel="preconnect" href="https://res.cloudinary.com">
+    <!-- Preconnect first — before everything -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
     <link rel="dns-prefetch" href="https://res.cloudinary.com">
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Font preload + Async Loading (non-blocking) -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" media="all">
+    <!-- Hero image preload — mobile first (400w) -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_400/v1780232972/hero_image_sy7ovp.png"
+      imagesrcset="
+        https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_400/v1780232972/hero_image_sy7ovp.png 400w,
+        https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_800/v1780232972/hero_image_sy7ovp.png 800w,
+        https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_1200/v1780232972/hero_image_sy7ovp.png 1200w
+      "
+      imagesizes="(max-width: 768px) 100vw, 50vw"
+      fetchpriority="high"
+    />
 
-    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto/v1780234875/gopalji_new_logo_ukch69.png" />
-    <title>Gopalji Khopra Udhyog | Premium Industrial Coconut Ingredients</title>
+    <!-- Fonts — non blocking, loaded after page renders -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap">
+    </noscript>
+
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_64/v1780234875/gopalji_new_logo_ukch69.png" />
+    <title>Gopalji Khopra Udhyog | Premium Coconut Ingredients Manufacturer India</title>
   </head>
   <body>
     <div id="root"></div>
