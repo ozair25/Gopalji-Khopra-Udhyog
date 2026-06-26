@@ -27,7 +27,7 @@ export default function MainSite() {
     <div className="min-h-screen">
       <SEO 
         title="Coconut Powder & Flakes Manufacturer in Indore | Gopalji Khopra" 
-        description="Established in 2017, Gopalji Khopra Udyog is India's premium B2B Coconut Powder Manufacturer, Wholesale Coconut Flakes Supplier, and Cold-Pressed Coconut Oil Supplier in Indore, Madhya Pradesh. FSSAI certified, food-grade bulk supplies." 
+        description="Established in 2007, Gopalji Khopra Udyog is India's premium B2B Coconut Powder Manufacturer, Wholesale Coconut Flakes Supplier, and Cold-Pressed Coconut Oil Supplier in Indore, Madhya Pradesh. FSSAI certified, food-grade bulk supplies." 
         canonicalUrl="https://gopaljikhopra.com"
         keywords={SEO_KEYWORDS}
         schemas={allSchemas}

@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db, handleFirestoreError, OperationType } from '../lib/firebase';
+import { sendEmailNotification } from '../utils/sendEmailNotification';
 
 // Zod Validation Schema for reliable B2B Lead Validation
 const inquirySchema = z.object({
@@ -152,57 +153,85 @@ export default function FloatingInquiryPanel() {
     }
 
     setLoading(true);
-    const path = 'inquiries';
+
+    const payload = {
+      name: formData.name,
+      companyName: formData.companyName || "Individual Prospect",
+      email: formData.email,
+      phone: formData.phone,
+      product: formData.productRequirement,
+      quantity: formData.quantity || "Bulk / Wholesale",
+      message: formData.message || "Sent via interactive B2B Floating Inquiry Panel",
+      city: "Indore B2B Inquiry",
+      state: "Madhya Pradesh",
+      source: "Floating Inquiry Panel"
+    };
 
     // Capture locally as well so it's always accessible in offline fallback
     const localInquiry = {
-      id: 'local-' + Date.now(),
-      name: formData.name,
-      businessName: formData.companyName,
+      id: "local-" + Date.now(),
+      inquiryId: "Pending...",
+      ...payload,
       productType: formData.productRequirement,
-      quantity: formData.quantity,
-      city: 'Indore B2B Inquiry',
-      phone: formData.phone,
-      status: 'new',
+      businessName: formData.companyName,
+      status: "Pending",
       createdAt: new Date().toISOString()
     };
 
     try {
-      const existing = localStorage.getItem('gopalji_local_inquiries');
+      const existing = localStorage.getItem("gopalji_local_inquiries");
       const list = existing ? JSON.parse(existing) : [];
       list.unshift(localInquiry);
-      localStorage.setItem('gopalji_local_inquiries', JSON.stringify(list));
+      localStorage.setItem("gopalji_local_inquiries", JSON.stringify(list));
     } catch (err) {
       console.error("Local storage sync error:", err);
     }
 
     try {
-      // Connect to Firestore real database
-      await addDoc(collection(db, path), {
-        name: formData.name,
-        businessName: formData.companyName,
-        companyName: formData.companyName,
-        phone: formData.phone,
-        email: formData.email,
-        productType: formData.productRequirement,
-        productRequirement: formData.productRequirement,
-        quantity: formData.quantity,
-        message: formData.message || 'Sent via interactive B2B Floating Inquiry Panel',
-        city: 'Indore B2B Inquiry',
-        status: 'new',
-        createdAt: serverTimestamp()
+      // Connect to full-stack backend
+      const res = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
       });
+
+      if (!res.ok) {
+        throw new Error("Server rejected interactive panel inquiry submission.");
+      }
+
+      const result = await res.json();
+
+      // Update local storage entry with serial code
+      if (result.success && result.inquiryId) {
+        try {
+          const existing = localStorage.getItem("gopalji_local_inquiries");
+          if (existing) {
+            const list = JSON.parse(existing);
+            if (list.length > 0 && list[0].id === localInquiry.id) {
+              list[0].inquiryId = result.inquiryId;
+              list[0].status = "Pending";
+              localStorage.setItem("gopalji_local_inquiries", JSON.stringify(list));
+            }
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      sendEmailNotification(formData);
 
       setSuccess(true);
       // Reset form fields
       setFormData({
-        name: '',
-        companyName: '',
-        phone: '',
-        email: '',
-        productRequirement: 'Coconut Powder',
-        quantity: '',
-        message: ''
+        name: "",
+        companyName: "",
+        phone: "",
+        email: "",
+        productRequirement: "Coconut Powder",
+        quantity: "",
+        message: ""
       });
       
       // Keep success state open for 5 seconds before closing
@@ -213,16 +242,18 @@ export default function FloatingInquiryPanel() {
 
     } catch (err) {
       console.error("Firestore Floating Quote Error:", err);
-      // Even if Firestore fails, local copy is saved, so we can show success
+      // Fallback local visual success so user experience stays pristine even if offline
+      sendEmailNotification(formData);
+
       setSuccess(true);
       setFormData({
-        name: '',
-        companyName: '',
-        phone: '',
-        email: '',
-        productRequirement: 'Coconut Powder',
-        quantity: '',
-        message: ''
+        name: "",
+        companyName: "",
+        phone: "",
+        email: "",
+        productRequirement: "Coconut Powder",
+        quantity: "",
+        message: ""
       });
       setTimeout(() => {
         setSuccess(false);
@@ -338,7 +369,7 @@ export default function FloatingInquiryPanel() {
                 <div className="grid grid-cols-2 xs:grid-cols-4 gap-2 bg-[#E5D5BC]/25 p-3 rounded-2xl border border-[#D8B26A]/20">
                   <div className="flex flex-col items-center justify-center text-center p-1 border-r border-[#8C6239]/10 last:border-r-0">
                     <Clock size={14} className="text-[#8C6239] mb-1" />
-                    <span className="text-[9px] font-bold text-[#4A2E1F] leading-none uppercase">Est. 2017</span>
+                    <span className="text-[9px] font-bold text-[#4A2E1F] leading-none uppercase">Est. 2007</span>
                   </div>
                   <div className="flex flex-col items-center justify-center text-center p-1 border-r border-[#8C6239]/10 last:border-r-0">
                     <ShieldCheck size={14} className="text-[#8C6239] mb-1" />
@@ -537,7 +568,7 @@ export default function FloatingInquiryPanel() {
                     <div>
                       <p className="text-[8px] uppercase tracking-widest font-bold text-[#4A2E1F]/50">Direct Commercial Dials</p>
                       <div className="text-[11.5px] xs:text-xs font-bold text-[#4A2E1F] mt-0.5">
-                        <a href="tel:9425054999" className="hover:text-[#8C6239] transition-colors">9425054999</a> &nbsp;/&nbsp;&nbsp;
+                        <a href="tel:9109216931" className="hover:text-[#8C6239] transition-colors">9109216931</a> &nbsp;/&nbsp;&nbsp;
                         <a href="tel:8889854999" className="hover:text-[#8C6239] transition-colors">8889854999</a>
                       </div>
                       <p className="text-[10px] text-[#4A2E1F]/60 mt-0.5 font-medium">
@@ -550,13 +581,13 @@ export default function FloatingInquiryPanel() {
                 {/* Instant Social Channels Strip */}
                 <div className="grid grid-cols-2 gap-3.5 pt-2">
                   <a
-                    href="tel:9425054999"
+                    href="tel:9109216931"
                     className="bg-[#6B4A2E]/10 hover:bg-[#6B4A2E]/15 text-[#6B4A2E] text-[10px] font-bold uppercase tracking-[0.15em] text-center py-3 rounded-lg border border-[#6B4A2E]/20 transition-all flex items-center justify-center gap-1.5"
                   >
                     <Phone size={13} /> Call Desk
                   </a>
                   <a
-                    href="https://wa.me/919425054999?text=Hello%20Gopalji%20Khopra%20Udyog,%20I%20would%20like%20to%20request%20wholesale%20bulk%20product%20pricing."
+                    href="https://wa.me/919109216931?text=Hello%20Gopalji%20Khopra%20Udyog,%20I%20would%20like%20to%20request%20wholesale%20bulk%20product%20pricing."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#25D366] hover:bg-[#20ba5a] text-white text-[10px] font-bold uppercase tracking-[0.15em] text-center py-3 rounded-lg transition-all flex items-center justify-center gap-1.5 shadow-sm"

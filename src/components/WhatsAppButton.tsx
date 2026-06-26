@@ -2,7 +2,7 @@ import { MessageCircle, Phone } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function WhatsAppButton() {
-  const whatsappNumber = "+919425054999";
+  const whatsappNumber = "+919109216931";
   const message = "Hello Gopalji Khopra Udyog, I'm interested in your premium coconut ingredients.";
   const whatsappUrl = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodeURIComponent(message)}`;
 
@@ -28,7 +28,7 @@ export default function WhatsAppButton() {
 
       {/* 2. FLOATING CALL BUTTON (Bottom Left - highly requested!) */}
       <motion.a
-        href="tel:9425054999"
+        href="tel:9109216931"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}

@@ -25,9 +25,7 @@ export default function Products() {
       categorySelect = 'Coconut Flakes';
     } else if (product.categoryId === 'coconut-powder') {
       categorySelect = 'Coconut Powder';
-    } else if (product.categoryId === 'desiccated-coconut') {
-      categorySelect = 'Desiccated Coconut';
-    } else if (product.categoryId === 'cold-pressed-coconut-oil') {
+    } else if (product.categoryId === 'coconut-oil') {
       categorySelect = 'Coconut Oil';
     }
     
@@ -117,7 +115,7 @@ export default function Products() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
               <a 
-                href="tel:9425054999"
+                href="tel:9109216931"
                 className="bg-[#6B4A2E] hover:bg-[#5C3F27] text-white px-8 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
               >
                 <Phone size={14} /> Call Now

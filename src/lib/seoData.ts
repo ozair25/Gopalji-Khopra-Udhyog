@@ -30,8 +30,8 @@ export function getOrganizationSchema() {
     "alternateName": ["Gopalji", "Gopalji Coconut Products"],
     "url": BASE_URL,
     "logo": `${BASE_URL}/logo-b2b.webp`,
-    "description": "Established in 2017 in Indore, Gopalji Khopra Udyog is a prestigious B2B Manufacturer and Wholesaler of high-grade Coconut Powder, Coconut Flakes, pure Coconut Oil, and Desiccated Coconut ingredients across India.",
-    "foundingDate": "2017",
+    "description": "Established in 2007 in Indore, Gopalji Khopra Udyog is a prestigious B2B Manufacturer and Wholesaler of high-grade Coconut Powder, Coconut Flakes, pure Coconut Oil, and Desiccated Coconut ingredients across India.",
+    "foundingDate": "2007",
     "founder": {
       "@type": "Person",
       "name": "A Garg"
@@ -44,7 +44,7 @@ export function getOrganizationSchema() {
     ],
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+91-7949337073",
+      "telephone": "+91-9109216931",
       "contactType": "sales",
       "areaServed": "IN",
       "availableLanguage": ["Hindi", "English"]
@@ -61,7 +61,7 @@ export function getLocalBusinessSchema() {
     "image": "https://5.imimg.com/data5/SELLER/Default/2025/6/518886167/EM/JZ/MS/147692506/whatsapp-image-2025-06-14-at-3-29-38-pm-1-500x500.jpeg",
     "@id": `${BASE_URL}/#local-business`,
     "url": BASE_URL,
-    "telephone": "+91-7949337073",
+    "telephone": "+91-9109216931",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",

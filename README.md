@@ -1,120 +1,20 @@
-Gopalji Khopra Udyog Website
-Overview
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-Gopalji Khopra Udyog is a modern B2B manufacturing website developed for a leading coconut ingredient producer based in Indore, Madhya Pradesh. The platform showcases the company's products, manufacturing capabilities, quality standards, and enables bulk inquiries from confectionery manufacturers, bakeries, food processing companies, and wholesalers.
+# Run and deploy your AI Studio app
 
-Features
-Business Website
-Professional corporate homepage
-Company overview and manufacturing capabilities
-Product showcase
-Quality assurance section
-Contact and inquiry forms
-Mobile responsive design
-SEO optimized structure
-Product Catalog
-Desiccated Coconut
-Coconut Powder
-Coconut Flakes
-Product specifications
-Packaging information
-Bulk order support
-Inquiry Management
-Bulk quotation requests
-Product inquiries
-Customer information collection
-Lead management workflow
-Admin Dashboard
-Inquiry tracking
-Pending inquiries
-In Process inquiries
-Closed inquiries
-Analytics and reporting
-Customer management
-Technology Stack
-Frontend
-Next.js
-React
-TypeScript
-Tailwind CSS
-Backend
-Firebase Authentication
-Firestore Database
-Firebase Storage
-Deployment
-Vercel / Netlify
-Custom Domain
-SSL Enabled
-Project Structure
-src/
-├── components/
-├── pages/
-├── sections/
-├── assets/
-├── hooks/
-├── services/
-├── utils/
-├── firebase/
-└── types/
-Installation
-git clone repository-url
+This contains everything you need to run your app locally.
 
-cd gopalji-khopra-udyog
+View your app in AI Studio: https://ai.studio/apps/c61ea803-b59e-4dcd-8947-789dcffd8f4f
 
-npm install
+## Run Locally
 
-npm run dev
-Environment Variables
+**Prerequisites:**  Node.js
 
-Create a .env.local file:
 
-VITE_FIREBASE_API_KEY=
-VITE_FIREBASE_AUTH_DOMAIN=
-VITE_FIREBASE_PROJECT_ID=
-VITE_FIREBASE_STORAGE_BUCKET=
-VITE_FIREBASE_MESSAGING_SENDER_ID=
-VITE_FIREBASE_APP_ID=
-Build
-npm run build
-Deployment
-npm run build
-
-Deploy the generated build folder to:
-
-Netlify
-Vercel
-Firebase Hosting
-Business Information
-
-Gopalji Khopra Udyog
-
-Established: 2017
-
-Location:
-Indore, Madhya Pradesh, India
-
-Industry:
-Food Manufacturing
-
-Products:
-
-Desiccated Coconut
-Coconut Powder
-Coconut Flakes
-
-Target Customers:
-
-Confectionery Manufacturers
-Industrial Bakeries
-Food Processing Companies
-Wholesalers
-Distributors
-Performance Goals
-Mobile First Design
-SEO Optimized
-Fast Loading Speed
-Accessibility Compliance
-Production Ready Architecture
-License
-
-© Gopalji Khopra Udyog. All Rights Reserved.
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

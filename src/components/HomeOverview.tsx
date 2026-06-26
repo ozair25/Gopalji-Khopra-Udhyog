@@ -122,7 +122,7 @@ export default function HomeOverview() {
             transition={{ delay: 0.2 }}
             className="text-sm sm:text-base text-[#3D2B1F]/90 font-semibold leading-relaxed max-w-2xl mx-auto"
           >
-            Established in 2017, Gopalji Khopra Udyog is a premium B2B Coconut Ingredient Manufacturer and Wholesaler in Indore. We supply highly consistent, food-grade ingredients to bakeries, confectioneries, food manufacturers, and wholesalers nationwide.
+            Established in 2007, Gopalji Khopra Udyog is a premium B2B Coconut Ingredient Manufacturer and Wholesaler in Indore. We supply highly consistent, food-grade ingredients to bakeries, confectioneries, food manufacturers, and wholesalers nationwide.
           </motion.p>
         </div>
 

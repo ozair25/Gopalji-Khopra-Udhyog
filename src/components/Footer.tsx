@@ -15,7 +15,7 @@ export default function Footer() {
             <span className="text-[9px] tracking-[0.4em] uppercase font-bold text-[#C29F6F]">Khopra Udyog</span>
           </div>
           <p className="text-xs text-[#E5D5BC]/70 leading-relaxed font-semibold">
-            Trusted manufacturer and supplier of premium coconut-based food ingredients since 2017. Serving bakeries, confectioneries, wholesalers, and food brands across India.
+            Trusted manufacturer and supplier of premium coconut-based food ingredients since 2007. Serving bakeries, confectioneries, wholesalers, and food brands across India.
           </p>
           <div className="inline-block bg-[#E5D5BC]/10 border border-[#D8B26A]/20 text-[#E9C38E] text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
             GST Registered Business
@@ -55,14 +55,14 @@ export default function Footer() {
             <p className="flex items-start gap-1">
               <span className="text-[#C29F6F]" aria-hidden="true">📞</span> 
               <span>
-                <a href="tel:9425054999" className="hover:text-[#E9C38E] transition-colors focus:ring-1 focus:ring-[#E9C38E] focus:outline-none rounded px-0.5">9425054999</a> / <br />
+                <a href="tel:9109216931" className="hover:text-[#E9C38E] transition-colors focus:ring-1 focus:ring-[#E9C38E] focus:outline-none rounded px-0.5">9109216931</a> / <br />
                 <a href="tel:8889854999" className="hover:text-[#E9C38E] transition-colors focus:ring-1 focus:ring-[#E9C38E] focus:outline-none rounded px-0.5">8889854999</a> <br />
                 <span className="text-[10px] text-[#E5D5BC]/50 mt-1 block">Landline: <a href="tel:07314985317" className="hover:text-[#E9C38E] transition-colors">0731-4985317</a></span>
               </span>
             </p>
             <p className="flex items-center gap-1">
               <span className="text-[#C29F6F]" aria-hidden="true">✉️</span> 
-              <span className="break-all">inquiry@gopaljikhopra.com</span>
+              <span className="break-all">gopaljikhopra@gmail.com</span>
             </p>
             <p className="text-[10px] text-[#E5D5BC]/40 font-semibold pt-1">
               FSSAI Lic. Registered

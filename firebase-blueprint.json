@@ -2,28 +2,70 @@
   "entities": {
     "Inquiry": {
       "title": "Inquiry",
-      "description": "Customer lead from the website",
+      "description": "Customer lead from the website and interactive panels",
       "type": "object",
       "properties": {
+        "inquiryId": { "type": "string" },
         "name": { "type": "string" },
+        "companyName": { "type": "string" },
         "businessName": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "product": { "type": "string" },
         "productType": { "type": "string" },
         "quantity": { "type": "string" },
         "city": { "type": "string" },
-        "phone": { "type": "string" },
+        "state": { "type": "string" },
+        "message": { "type": "string" },
         "status": { 
           "type": "string",
-          "enum": ["new", "contacted", "completed"]
+          "enum": ["Pending", "In Process", "Completed", "Rejected", "new", "contacted", "completed"]
         },
-        "createdAt": { "type": "string", "format": "date-time" }
+        "source": { "type": "string" },
+        "createdAt": { "type": "string" }
       },
-      "required": ["name", "businessName", "phone", "createdAt"]
+      "required": ["inquiryId", "name", "phone", "email", "product", "status", "createdAt"]
+    },
+    "EmailDeliveryLog": {
+      "title": "EmailDeliveryLog",
+      "description": "Log of server-side notification or auto-reply dispatches",
+      "type": "object",
+      "properties": {
+        "logId": { "type": "string" },
+        "inquiryId": { "type": "string" },
+        "type": { "type": "string" },
+        "to": { "type": "string" },
+        "subject": { "type": "string" },
+        "status": { "type": "string" },
+        "error": { "type": "string" },
+        "method": { "type": "string" },
+        "sentAt": { "type": "string" },
+        "retryCount": { "type": "number" }
+      },
+      "required": ["logId", "inquiryId", "type", "to", "status", "sentAt"]
+    },
+    "Sequence": {
+      "title": "Sequence",
+      "description": "Global unique sequence counters for document ID generation",
+      "type": "object",
+      "properties": {
+        "current": { "type": "number" }
+      },
+      "required": ["current"]
     }
   },
   "firestore": {
     "inquiries": {
       "schema": "Inquiry",
-      "description": "Collection of all customer leads"
+      "description": "Collection of all customer B2B leads"
+    },
+    "email_delivery_logs": {
+      "schema": "EmailDeliveryLog",
+      "description": "Collection of all email delivery tracking logs"
+    },
+    "sequences": {
+      "schema": "Sequence",
+      "description": "Collection of unique counters for sequential index fields"
     }
   }
 }

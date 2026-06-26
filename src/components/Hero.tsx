@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollIndicator from './ScrollIndicator';
 
-const bg2 = "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780237121/final_hero_eeh4an.png";
+const bg2 = "https://res.cloudinary.com/dtrvyelcg/image/upload/v1780865838/Adobe_Express_-_file_xui6np.png";
 
 export default function Hero() {
   return (
@@ -17,7 +17,7 @@ export default function Hero() {
           <div className="flex items-center gap-2 xs:gap-3">
             <div className="h-[1px] w-8 xs:w-11 bg-[#6B4A2E]"></div>
             <span className="text-[8.5px] xs:text-[10px] font-bold uppercase tracking-[0.2em] xs:tracking-[0.35em] text-[#6B4A2E]/85">
-              Est. 2017 | Premium Manufacturer
+              Est. 2007 | Premium Manufacturer
             </span>
           </div>
 
@@ -91,29 +91,22 @@ export default function Hero() {
             className="w-full flex justify-center lg:justify-end bg-[#E3D3BE]"
             style={{ backgroundColor: '#E3D3BE' }}
           >
-            <img
-  src="https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_800/v1780232972/hero_image_sy7ovp.png"
-  srcSet="
-    https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_400/v1780232972/hero_image_sy7ovp.png 400w,
-    https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_800/v1780232972/hero_image_sy7ovp.png 800w,
-    https://res.cloudinary.com/dtrvyelcg/image/upload/f_auto,q_auto,w_1200/v1780232972/hero_image_sy7ovp.png 1200w
-  "
-  sizes="(max-width: 768px) 100vw, 50vw"
-  alt="Gopalji Khopra Premium Coconut Products - Flakes, Powder, Oil"
-  className="w-full object-contain object-right-bottom select-none cursor-default"
-  style={{
-    backgroundColor: '#E3D3BE',
-    mixBlendMode: 'darken',
-    maxHeight: '696px',
-    transform: 'scale(1.25) translateY(-10%) translateX(-10%)',
-    transformOrigin: 'center bottom',
-  }}
-  loading="eager"
-  fetchPriority="high"
-  decoding="async"
-  width="947"
-  height="691"
-/>
+            <img 
+              src={bg2} 
+              alt="Gopalji Khopra Premium Product Composition" 
+              className="w-full object-contain object-right-bottom select-none cursor-default origin-bottom transition-transform duration-500 scale-100 translate-y-8 sm:scale-105 sm:translate-y-4 lg:scale-[1.25] lg:-translate-y-[10%]"
+              style={{ 
+                backgroundColor: '#E3D3BE', 
+                mixBlendMode: 'darken',
+                maxHeight: '696px',
+              }}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              width="947"
+              height="691"
+              referrerPolicy="no-referrer"
+            />
           </motion.div>
         </div>
 

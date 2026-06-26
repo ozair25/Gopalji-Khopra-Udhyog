@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../lib/firebase';
 import { Loader2 } from 'lucide-react';
+import { ADMIN_SECURITY_PATHS } from '../config/adminPaths';
 
 export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const [user, loading] = useAuthState(auth);
@@ -17,7 +18,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
   }
 
   if (!user && !isOfflineAdmin) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={ADMIN_SECURITY_PATHS.LOGIN} replace />;
   }
 
   return <>{children}</>;

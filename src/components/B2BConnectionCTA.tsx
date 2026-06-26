@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { Mail, MessageCircle, ArrowRight } from 'lucide-react';
 
 export default function B2BConnectionCTA() {
-  const whatsappNumber = "+917949337073";
+  const whatsappNumber = "+919109216931";
   const message = "Hello Gopalji Khopra Udyog, I'm interested in partnering with you for premium bulk coconut ingredients.";
   const whatsappUrl = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodeURIComponent(message)}`;
 

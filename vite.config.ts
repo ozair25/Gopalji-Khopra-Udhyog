@@ -16,25 +16,21 @@ export default defineConfig(({mode}) => {
       },
     },
     build: {
-      minify: 'esbuild',
-      target: 'es2015',
-      cssMinify: true,
       rollupOptions: {
         output: {
           manualChunks: {
-            'react-vendor': ['react', 'react-dom'],
-            'router': ['react-router-dom'],
-            'motion': ['motion'],
-            'firebase': ['firebase/app', 'firebase/firestore'],
+            vendor: ['react', 'react-dom'],
+            router: ['react-router-dom'],
+            motion: ['motion'],
           }
         }
       }
     },
-    optimizeDeps: {
-      include: ['react', 'react-dom', 'react-router-dom'],
-    },
     server: {
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
+      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
   };

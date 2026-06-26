@@ -1,7 +1,7 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // 0. Default Deny
+    // 0. Default Deny catch-all boundary
     match /{document=**} {
       allow read, write: if false;
     }
@@ -12,28 +12,44 @@ service cloud.firestore {
     }
 
     function isAdmin() {
-      return isSignedIn() && (request.auth.token.email == "admin@gopalji" || request.auth.token.email == "admin@gopalji.com" || request.auth.token.email == "sayedozair25@gmail.com");
+      return isSignedIn() && (
+        request.auth.token.email == "admin@gopalji" || 
+        request.auth.token.email == "admin@gopalji.com" || 
+        request.auth.token.email == "sayedozair25@gmail.com"
+      );
     }
 
     function incoming() {
       return request.resource.data;
     }
 
+    // Schema Validation Rules
     function isValidInquiry(data) {
-      return data.keys().hasAll(['name', 'businessName', 'phone', 'status', 'createdAt']) &&
+      return data.keys().hasAll(['name', 'phone', 'email', 'product', 'status']) &&
              data.name is string && data.name.size() <= 200 &&
-             data.businessName is string && data.businessName.size() <= 200 &&
-             data.phone is string && data.phone.size() <= 30 &&
-             data.status in ['new', 'contacted', 'completed'] &&
-             data.createdAt == request.time;
+             data.phone is string && data.phone.size() <= 40 &&
+             data.email is string && data.email.size() <= 200 &&
+             data.product is string && data.product.size() <= 200 &&
+             data.status is string;
     }
 
+    // inquiries collection rule match
     match /inquiries/{inquiryId} {
-      // Public can create inquiries
       allow create: if isValidInquiry(incoming());
-      
-      // Admin can manage everything
       allow read, update, delete: if isAdmin();
+    }
+
+    // email_delivery_logs collection rule match
+    match /email_delivery_logs/{logId} {
+      allow create: if false;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // sequences collection rule match
+    match /sequences/{seqId} {
+      allow read: if isSignedIn();
+      allow create, update: if isAdmin();
+      allow delete: if false;
     }
   }
 }

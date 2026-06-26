@@ -4,6 +4,7 @@ import { auth } from '../lib/firebase';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Lock, Mail, Loader2 } from 'lucide-react';
+import { ADMIN_SECURITY_PATHS } from '../config/adminPaths';
 
 export default function Login() {
   const [email, setEmail] = useState('admin@gopalji');
@@ -21,7 +22,7 @@ export default function Login() {
     if (email === 'admin@gopalji' && password === 'gopalji@123') {
       sessionStorage.setItem('isOfflineAdmin', 'true');
       setLoading(false);
-      navigate('/admin');
+      navigate(ADMIN_SECURITY_PATHS.DASHBOARD);
       return;
     }
 
@@ -31,7 +32,7 @@ export default function Login() {
       // If the user hasn't set up the email/password provider, this might fail.
       await signInWithEmailAndPassword(auth, email, password);
       sessionStorage.removeItem('isOfflineAdmin');
-      navigate('/admin');
+      navigate(ADMIN_SECURITY_PATHS.DASHBOARD);
     } catch (err: any) {
       console.error(err);
       setError('Invalid credentials. Please ensure admin@gopalji and correct password are used.');

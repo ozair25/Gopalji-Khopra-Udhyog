@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Send, Phone, Mail, MapPin, MessageCircle, CheckCircle2, Loader2, User, Clock, BellRing } from 'lucide-react';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db, handleFirestoreError, OperationType } from '../lib/firebase';
+import { sendEmailNotification } from '../utils/sendEmailNotification';
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
@@ -80,66 +81,97 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const path = 'inquiries';
+
+    const payload = {
+      name: formData.name,
+      companyName: formData.companyName || "Individual Prospect",
+      email: formData.email,
+      phone: formData.phone,
+      product: formData.productRequirement,
+      quantity: "Bulk Order / Wholesale",
+      message: formData.message,
+      city: "Indore",
+      state: "Madhya Pradesh",
+      source: "Contact Page Form"
+    };
 
     // Capture locally as well so it's always accessible in offline fallback
     const localInquiry = {
-      id: 'local-' + Date.now(),
-      name: formData.name,
-      businessName: formData.companyName,
+      id: "local-" + Date.now(),
+      inquiryId: "Pending...",
+      ...payload,
       productType: formData.productRequirement,
-      quantity: 'Bulk Order / Wholesale',
-      city: 'Indore',
-      phone: formData.phone,
-      status: 'new',
+      businessName: formData.companyName,
+      status: "Pending",
       createdAt: new Date().toISOString()
     };
 
     try {
-      const existing = localStorage.getItem('gopalji_local_inquiries');
+      const existing = localStorage.getItem("gopalji_local_inquiries");
       const list = existing ? JSON.parse(existing) : [];
       list.unshift(localInquiry);
-      localStorage.setItem('gopalji_local_inquiries', JSON.stringify(list));
+      localStorage.setItem("gopalji_local_inquiries", JSON.stringify(list));
     } catch (err) {
       console.error("Local storage sync error:", err);
     }
 
     try {
-      await addDoc(collection(db, path), {
-        name: formData.name,
-        businessName: formData.companyName,
-        companyName: formData.companyName,
-        phone: formData.phone,
-        email: formData.email,
-        productType: formData.productRequirement,
-        productRequirement: formData.productRequirement,
-        message: formData.message,
-        city: 'Indore',
-        quantity: 'Bulk Order / Wholesale',
-        status: 'new',
-        createdAt: serverTimestamp()
+      const res = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
       });
+
+      if (!res.ok) {
+        throw new Error("Server inquiry endpoint rejected submission.");
+      }
+
+      const result = await res.json();
+      
+      // Update local copy with actual ID if available
+      if (result.success && result.inquiryId) {
+        try {
+          const existing = localStorage.getItem("gopalji_local_inquiries");
+          if (existing) {
+            const list = JSON.parse(existing);
+            if (list.length > 0 && list[0].id === localInquiry.id) {
+              list[0].inquiryId = result.inquiryId;
+              list[0].status = "Pending";
+              localStorage.setItem("gopalji_local_inquiries", JSON.stringify(list));
+            }
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      sendEmailNotification(formData);
+
       setSuccess(true);
       setFormData({
-        name: '',
-        companyName: '',
-        phone: '',
-        email: '',
-        productRequirement: 'Coconut Flakes',
-        message: ''
+        name: "",
+        companyName: "",
+        phone: "",
+        email: "",
+        productRequirement: "Coconut Flakes",
+        message: ""
       });
       setTimeout(() => setSuccess(false), 6000);
     } catch (error) {
-      console.error("Error submitting B2B inquiry to database:", error);
-      // Even if Firestore fails, local copy is saved, so we can show success
+      console.error("Error submitting B2B inquiry to server gateway:", error);
+      // Fallback local visual success so user experience stays pristine even if offline
+      sendEmailNotification(formData);
+      
       setSuccess(true);
       setFormData({
-        name: '',
-        companyName: '',
-        phone: '',
-        email: '',
-        productRequirement: 'Coconut Flakes',
-        message: ''
+        name: "",
+        companyName: "",
+        phone: "",
+        email: "",
+        productRequirement: "Coconut Flakes",
+        message: ""
       });
       setTimeout(() => setSuccess(false), 6000);
     } finally {
@@ -217,8 +249,8 @@ export default function Contact() {
                   <div>
                     <p className="text-[9px] uppercase font-bold text-[#4A2E1F]/40 tracking-wider">Commercial Lines</p>
                     <div className="text-sm font-bold text-[#4A2E1F] space-y-0.5">
-                      <a href="tel:9425054999" className="hover:text-[#8C6239] transition-colors block">
-                        9425054999
+                      <a href="tel:9109216931" className="hover:text-[#8C6239] transition-colors block">
+                        9109216931
                       </a>
                       <a href="tel:8889854999" className="hover:text-[#8C6239] transition-colors block">
                         8889854999
@@ -237,7 +269,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-[9px] uppercase font-bold text-[#4A2E1F]/40 tracking-wider">Official Email</p>
-                    <p className="text-sm font-bold text-[#4A2E1F]">inquiry@gopaljikhopra.com</p>
+                    <p className="text-sm font-bold text-[#4A2E1F]">gopaljikhopra@gmail.com</p>
                   </div>
                 </div>
 
@@ -260,14 +292,14 @@ export default function Contact() {
               {/* Instant Call / Chat Action Strip */}
               <div className="grid grid-cols-2 gap-3 pt-4 border-t border-[#8C6239]/10">
                 <a 
-                  href="tel:9425054999"
+                  href="tel:9109216931"
                   className="bg-[#6B4A2E] hover:bg-[#5C3F27] text-white py-3 px-4 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-1.5"
                 >
                   <Phone size={12} /> Call Now
                 </a>
                 
                 <a 
-                  href="https://wa.me/919425054999"
+                  href="https://wa.me/919109216931"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 px-4 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-1.5 shadow-sm hover:shadow"

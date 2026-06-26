@@ -18,7 +18,7 @@ export default function AboutUs() {
     },
     {
       title: "Untouched Hygienic Processing",
-      desc: "Advanced modern mill designed primarily to eliminate human contamination and guarantee food-grade safety.",
+      desc: "Advanced modern factory designed primarily to eliminate human contamination and guarantee food-grade safety.",
       icon: Sparkles
     },
     {
@@ -63,10 +63,10 @@ export default function AboutUs() {
 
   const factsheet = [
     { label: "Nature of Business", value: "Manufacturer, Wholesaler & Supplier" },
-    { label: "Additional Services", value: "Custom Formulations & Milling Solutions" },
+    { label: "Additional Services", value: "Custom Formulations & Factory Solutions" },
     { label: "Company CEO / Owner", value: "A Garg (Proprietor)" },
     { label: "Legal Status of Firm", value: "Sole Proprietorship" },
-    { label: "Year of Establishment", value: "2017" },
+    { label: "Year of Establishment", value: "2007" },
     { label: "Active Employees", value: "11 to 25 Skilled Persons" },
     { label: "Annual Turnover", value: "INR 1.5 - 5 Crore" },
     { label: "Principal Location", value: "999, Bijalpur A.B Road, Indore (M.P) 452001" }
@@ -95,7 +95,7 @@ export default function AboutUs() {
               />
             </div>
             <div className="absolute -bottom-4 -right-4 bg-[#6B4A2E] text-white p-6 rounded-2xl shadow-xl max-w-xs border border-white/10 hidden sm:block">
-              <div className="text-2xl font-serif font-black">Since 2017</div>
+              <div className="text-2xl font-serif font-black">Since 2007</div>
               <div className="text-[9px] uppercase font-bold tracking-[0.15em] text-[#E5D5BC] mt-1">
                 A Preferred Central India Food Ingredient Partner
               </div>
@@ -112,7 +112,7 @@ export default function AboutUs() {
             
             <div className="space-y-4 text-xs xs:text-sm sm:text-base text-[#3D2B1F]/90 leading-relaxed font-semibold">
               <p>
-                Established in 2017 in Indore, Madhya Pradesh, **Gopalji Khopra Udyog** is a highly recognized Sole Proprietorship enterprise producing premium food-grade coconut ingredients. We cater strictly to major confectioneries, industrial bakeries, and wholesale hubs across India.
+                Established in 2007 in Indore, Madhya Pradesh, **Gopalji Khopra Udyog** is a highly recognized Sole Proprietorship enterprise producing premium food-grade coconut ingredients. We cater strictly to major confectioneries, industrial bakeries, and wholesale hubs across India.
               </p>
               <p>
                 Our core manufacturing lines yield high-fat desiccated coconut powder, sweet snow-white coconut flakes, and pure cold-pressed coconut oil. Every batch undergoes physical sorting and moisture-calibrations to preserve rich natural taste, aroma, and absolute hygiene.
@@ -167,7 +167,7 @@ export default function AboutUs() {
               
               <ul className="space-y-3 mt-4 text-xs sm:text-sm font-semibold">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-[#25D366]" /> Modern mills equipped with integrated temperature-sensitive drying beds.
+                  <CheckCircle2 size={14} className="text-[#25D366]" /> Modern factories equipped with integrated temperature-sensitive drying beds.
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 size={14} className="text-[#25D366]" /> Strict FIFO inventory rotation logs ensuring optimal freshness batches.
@@ -180,7 +180,7 @@ export default function AboutUs() {
             
             <div className="bg-white border border-[#D8B26A]/20 p-6 sm:p-8 rounded-[2rem] shadow-sm grid grid-cols-2 gap-4">
               <div className="bg-[#FAF7F2] p-4 rounded-xl border border-[#D8B26A]/10">
-                <h5 className="font-serif font-bold text-[#4A2E1F] text-xs">Milling Station</h5>
+                <h5 className="font-serif font-bold text-[#4A2E1F] text-xs">Processing Station</h5>
                 <p className="text-[10px] leading-relaxed text-[#4A2E1F]/70 mt-1 font-semibold">High-grade computerized pulverizing for consistent granular size control.</p>
               </div>
               <div className="bg-[#FAF7F2] p-4 rounded-xl border border-[#D8B26A]/10">
