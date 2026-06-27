@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gopaljikhopra.com/sitemap.xml
+Sitemap: https://gopaljikhopraudhyog.com/sitemap.xml
