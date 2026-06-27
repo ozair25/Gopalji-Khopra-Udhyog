@@ -2,7 +2,6 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -17,6 +16,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function MainSite() {
   return (
@@ -42,6 +42,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainSite />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/login" element={<Login />} />
         <Route 
           path="/admin" 
