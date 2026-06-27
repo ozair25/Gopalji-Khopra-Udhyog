@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
       <p>Our website uses cookies through Google Analytics to track site usage. You can disable cookies in your browser settings at any time.</p>
 
       <h2>Contact Us</h2>
-      <p>For any privacy-related questions, contact us at [your email] or +91-79493-37073.</p>
+      <p>For any privacy-related questions, contact us at gopaljikhopra@gmail.com or +91-79493-37073.</p>
     </div>
   );
 }
