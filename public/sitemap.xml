@@ -2,26 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gopaljikhopra.com/</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gopaljikhopra.com/products-services</loc>
-    <lastmod>2026-05-28</lastmod>
+    <loc>https://gopaljikhopra.com/privacy-policy</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://gopaljikhopra.com/about-us</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://gopaljikhopra.com/contact-us</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
 </urlset>
