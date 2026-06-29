@@ -4,7 +4,7 @@ A modern, responsive business website developed for **Gopalji Khopra Udhyog**, a
 
 ## 🌐 Live Demo
 
-(Add your live website link here)
+www.gopaljikhopraudhyog.com
 
 ## 📌 Project Overview
 
@@ -28,7 +28,6 @@ The website focuses on:
 - Product detail pages
 - Contact form
 - WhatsApp integration
-- Google Maps integration
 - Business information section
 - Smooth scrolling navigation
 - Clean modern UI
@@ -49,13 +48,13 @@ The website focuses on:
 
 - Firebase
   - Firestore Database
-  - Firebase Hosting (if applicable)
+  - Firebase Hosting 
 
 ### Other Tools
 
 - Git
 - GitHub
-- Netlify (Deployment)
+- Vercel (Deployment)
 - Google AI Studio (Initial UI generation & development assistance)
 
 ---
