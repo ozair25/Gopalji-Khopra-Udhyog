@@ -213,7 +213,7 @@ app.post("/api/inquiries", async (req, res) => {
 
     // Prepare emails
     const adminEmail = "sayedozair25@gmail.com";
-    const appUrl = process.env.APP_URL || "https://gopaljikhopra.com";
+    const appUrl = process.env.APP_URL || "https://www.gopaljikhopraudhyog.com";
     
     // Subject lines
     const adminSubject = `🔔 New Inquiry Received - Gopalji Khopra Udyog`;
@@ -246,7 +246,7 @@ app.post("/api/inquiries", async (req, res) => {
           </div>
           <p style="font-size: 12px; color: #888;">Submitted At: ${createdAtStr}</p>
           <div style="text-align: center; margin-top: 30px;">
-            <a href="${appUrl}/login" style="background-color: #6B4A2E; color: white; padding: 12px 25px; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 25px; display: inline-block;">Log in to admin dashboard to respond</a>
+            <a href="${appUrl}/login" style="background-color: #6B4A2E; color: white; padding: 12px 25px; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 25px; display: inline-block;">Access Dashboard</a>
           </div>
         </div>
         <div style="background-color: #efe6d5; text-align: center; padding: 15px; font-size: 11px; color: #777;">
@@ -255,7 +255,7 @@ app.post("/api/inquiries", async (req, res) => {
       </div>
     `;
 
-    const adminText = `New Inquiry Received\n\nInquiry ID: ${inquiryId}\nName: ${name}\nCompany: ${companyName}\nEmail: ${email}\nPhone: ${phone}\nCity: ${city || "Indore"}\nState: ${state || "Madhya Pradesh"}\nProduct: ${product}\nQuantity: ${quantity || "Bulk / Wholesale"}\n\nMessage:\n${message || ""}\n\nSubmitted At:\n${createdAtStr}\n\nPlease log in to the admin dashboard to review and respond.`;
+    const adminText = `New Inquiry Received\n\nInquiry ID: ${inquiryId}\nName: ${name}\nCompany: ${companyName}\nEmail: ${email}\nPhone: ${phone}\nCity: ${city || "Indore"}\nState: ${state || "Madhya Pradesh"}\nProduct: ${product}\nQuantity: ${quantity || "Bulk / Wholesale"}\n\nMessage:\n${message || "No custom message provided."}\n\nSubmitted At: ${createdAtStr}`;
 
     // Customer Auto-reply Template
     const customerHtml = `
@@ -273,7 +273,7 @@ app.post("/api/inquiries", async (req, res) => {
             <strong style="font-size: 20px; color: #6B4A2E; display: block; margin-top: 5px;">${inquiryId}</strong>
           </div>
           
-          <p>Our business representative from the Indore headquarters is currently analyzing your specifications against active milling availability. We will contact you shortly with bespoke wholesale pricing, premium shipping timelines, and our specification sheets.</p>
+          <p>Our business representative from the Indore headquarters is currently analyzing your specifications against active milling availability. We will contact you shortly with bespoke wholesale pricing matrices, delivery roadmaps, and custom product parameters tailored for your requirements.</p>
           
           <p style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5d5bc; font-size: 14px; text-align: center;">
             Regards,<br/>
@@ -287,7 +287,7 @@ app.post("/api/inquiries", async (req, res) => {
       </div>
     `;
 
-    const customerText = `Dear ${name},\n\nThank you for your inquiry.\n\nWe have successfully received your request.\n\nInquiry ID:\n${inquiryId}\n\nOur team will review your inquiry and contact you shortly.\n\nRegards,\nGopalji Khopra Udyog`;
+    const customerText = `Dear ${name},\n\nThank you for your inquiry.\n\nWe have successfully received your request.\n\nInquiry ID:\n${inquiryId}\n\nOur team will review your inquiry and contact you shortly with pricing and availability details.\n\nBest regards,\nGopalji Khopra Udyog`;
 
     // Fire off emails concurrently and log results
     const [adminResult, customerResult] = await Promise.all([
@@ -364,14 +364,14 @@ app.post("/api/email-logs/retry/:logId", async (req, res) => {
     }
 
     const inq = inquirySnap.data();
-    const appUrl = process.env.APP_URL || "https://gopaljikhopra.com";
+    const appUrl = process.env.APP_URL || "https://www.gopaljikhopraudhyog.com";
 
     // Reconstruct email templates based on type
     let html = "";
     let text = "";
 
     if (logData.type === "admin_notification") {
-      text = `New Inquiry Received\n\nInquiry ID: ${inq.inquiryId}\nName: ${inq.name}\nCompany: ${inq.companyName}\nEmail: ${inq.email}\nPhone: ${inq.phone}\nCity: ${inq.city}\nState: ${inq.state}\nProduct: ${inq.product}\nQuantity: ${inq.quantity}\n\nMessage:\n${inq.message}\n\nPlease logon to admin dashboard to review.`;
+      text = `New Inquiry Received\n\nInquiry ID: ${inq.inquiryId}\nName: ${inq.name}\nCompany: ${inq.companyName}\nEmail: ${inq.email}\nPhone: ${inq.phone}\nCity: ${inq.city}\nState: ${inq.state}\nProduct: ${inq.product}\nQuantity: ${inq.quantity}\nMessage: ${inq.message}`;
       html = `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e5d5bc; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #6B4A2E; color: #fff; padding: 20px; text-align: center;">
@@ -390,7 +390,7 @@ app.post("/api/email-logs/retry/:logId", async (req, res) => {
         </div>
       `;
     } else {
-      text = `Dear ${inq.name},\n\nThank you for your inquiry.\n\nWe have successfully received your request.\n\nInquiry ID:\n${inq.inquiryId}\n\nOur team will review your inquiry and contact you shortly.\n\nRegards,\nGopalji Khopra Udyog`;
+      text = `Dear ${inq.name},\n\nThank you for your inquiry.\n\nWe have successfully received your request.\n\nInquiry ID:\n${inq.inquiryId}\n\nOur team will review your inquiry and contact you shortly.`;
       html = `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e5d5bc; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #6B4A2E; color: #fff; padding: 20px; text-align: center;">

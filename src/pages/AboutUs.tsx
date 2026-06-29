@@ -23,7 +23,7 @@ export default function AboutUs() {
       <SEO 
         title="About Us & Quality Control Standards | Gopalji Khopra Udyog" 
         description="Operating in Indore since 2007, we are a leading Coconut Manufacturer in Indore, Madhya Pradesh. Read our corporate factsheet, food safety quality certifications, and MSME compliance data." 
-        canonicalUrl="https://gopaljikhopra.com/about-us"
+        canonicalUrl="https://www.gopaljikhopraudhyog.com/about-us"
         keywords={SEO_KEYWORDS}
         schemas={schemas}
       />

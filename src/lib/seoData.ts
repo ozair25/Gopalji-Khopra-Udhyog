@@ -3,7 +3,7 @@
  * For Gopalji Khopra Udyog (B2B Coconut Ingredients Supplier & Manufacturer, Indore, MP, India)
  */
 
-export const BASE_URL = "https://gopaljikhopra.com"; // Production canonical base
+export const BASE_URL = "https://www.gopaljikhopraudhyog.com"; // Production canonical base
 
 export const SEO_KEYWORDS = [
   "Coconut Powder Manufacturer",
@@ -90,7 +90,7 @@ export function getLocalBusinessSchema() {
       "closes": "19:00"
     },
     "sameAs": [
-      "https://gopaljikhopra.com",
+      "https://www.gopaljikhopraudhyog.com",
       "https://www.indiamart.com/gopalji-khopra-udhyog/"
     ]
   };
@@ -166,7 +166,7 @@ export function getFAQSchema() {
         "name": "What is the minimum quantity order (MOQ) for bulk shipments?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "As a pure-play Coconut Wholesaler and Manufacturer, we primarily cater to shipments starting from 500 KG to bulk Truckloads/Metric Tons for food processing hubs, sweet brands, and wholesale distribution channels."
+          "text": "As a pure-play Coconut Wholesaler and Manufacturer, we primarily cater to shipments starting from 500 KG to bulk Truckloads/Metric Tons for food processing hubs, sweet brands, and bakeries."
         }
       },
       {
@@ -174,7 +174,7 @@ export function getFAQSchema() {
         "name": "How does Gopalji keep products fresh during transportation?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "All our products are packed in moisture-protected, heavy-duty multi-wall bags, vacuum sealed. This protects the dry texture, high-percentage coconut oils, and snow-white color from outdoor humidity."
+          "text": "All our products are packed in moisture-protected, heavy-duty multi-wall bags, vacuum sealed. This protects the dry texture, high-percentage coconut oils, and snow-white color throughout logistics."
         }
       },
       {
@@ -182,7 +182,7 @@ export function getFAQSchema() {
         "name": "Where is the manufacturing and logistics hub located?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Our corporate headquarters and hygienic processing infrastructure are strategically located in Indore, Madhya Pradesh, creating the fastest pan-India road logistics to reach any major manufacturing destination."
+          "text": "Our corporate headquarters and hygienic processing infrastructure are strategically located in Indore, Madhya Pradesh, creating the fastest pan-India road logistics to reach any warehouse."
         }
       }
     ]

@@ -23,7 +23,7 @@ export default function ContactUs() {
       <SEO 
         title="Contact Commercial Sales Office | Gopalji Khopra Udyog" 
         description="Connect with our sales office in Indore, MP. Fill out our commercial lead intake form to request price lists, custom moisture parameters, bulk delivery quotes, or sample shipments." 
-        canonicalUrl="https://gopaljikhopra.com/contact-us"
+        canonicalUrl="https://www.gopaljikhopraudhyog.com/contact-us"
         keywords={SEO_KEYWORDS}
         schemas={schemas}
       />

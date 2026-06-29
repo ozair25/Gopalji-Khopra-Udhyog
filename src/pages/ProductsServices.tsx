@@ -24,7 +24,7 @@ export default function ProductsServices() {
       <SEO 
         title="Bulk Coconut Ingredients Supplier India | Gopalji Khopra Udyog" 
         description="Browse premium food-grade desiccated coconut powder, sweet long-cut coconut flakes, and pure cold-pressed coconut oil. High-volume contract rates for bakery and confectionery brands." 
-        canonicalUrl="https://gopaljikhopra.com/products-services"
+        canonicalUrl="https://www.gopaljikhopraudhyog.com/products-services"
         keywords={SEO_KEYWORDS}
         schemas={schemas}
       />
